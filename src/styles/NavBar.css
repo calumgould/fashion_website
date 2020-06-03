@@ -2,7 +2,7 @@
     list-style: none;
     justify-content: center;
     align-items: center;
-    font-family: var(--header-text);
+    font-family: var(--body-text);
     text-decoration: none;
     text-align: center;
 }
@@ -11,14 +11,33 @@
     font-size: 1.5em;
     display: inline-block;
     text-decoration: none;
-    color: var(--secondary);
+    color: var(--background);
 }
 
-.link {
+.link, .login {
     text-decoration: none;
     display: inline-block;
     color: inherit;
     padding: 1em 1.5em;
+}
+
+.login {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.login:hover {
+    color: var(--primary);
+}
+
+.logo-link {
+    text-decoration: none;
+    display: inline-block;
+    font-family: var(--header-text);
+    color: var(--primary);
+    font-size: 1.5em;
+    padding: 0 1em 0.2em 1em;
 }
 
 .link:visited {
@@ -28,6 +47,7 @@
 
 .link:hover {
     background-color: var(--primary);
+    color: var(--secondary)
 }
 
 .link-active {

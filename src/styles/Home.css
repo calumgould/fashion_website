@@ -5,14 +5,9 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
 }
 
 .logo {
@@ -24,4 +19,8 @@
 
 .button-wrapper {
     text-align: center;
+}
+
+.home-page {
+    margin-bottom: 3em;
 }
