@@ -1,13 +1,35 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: 'Always Sans';
+  src: local('Always Sans'), local('AlwaysSans'),
+    url('./assets/fonts/Always_Sans_Font.otf') format('opentype')
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+  font-family: 'Always Script';
+  src: local('Always Script'), local('AlwaysScript'),
+    url('./assets/fonts/Always_Script_Font.otf') format('opentype')
 }
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #FF0266;
+  --secondary: #FFFFFF;
+  --background: #212121;
+  --header-text: 'Always Script';
+  --body-text: 'Always Sans';
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--header-text);
+}
+
+p {
+  font-family: var(--body-text);
+}
+
+

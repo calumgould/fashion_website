@@ -1,0 +1,35 @@
+.nav {
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--header-text);
+    text-decoration: none;
+    text-align: center;
+}
+
+.nav li {
+    font-size: 1.5em;
+    display: inline-block;
+    text-decoration: none;
+    color: var(--secondary);
+}
+
+.link {
+    text-decoration: none;
+    display: inline-block;
+    color: inherit;
+    padding: 1em 1.5em;
+}
+
+.link:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+.link:hover {
+    background-color: var(--primary);
+}
+
+.link-active {
+    text-decoration: underline;
+}
