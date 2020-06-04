@@ -12,6 +12,8 @@ import About from 'containers/About';
 import Account from 'containers/Account';
 import Register from 'containers/Register';
 import Login from 'containers/Login';
+import SignUp from 'containers/SignUp';
+import SignUpConfirmation from 'components/SignUpConfirmation';
 
 import 'styles/Main.css';
 import 'index.css';
@@ -48,6 +50,14 @@ const App = (props) => {
                     <Route 
                     path='/register'
                     component={Register}
+                    />
+                    <Route 
+                    exact path='/signup'
+                    component={SignUp}
+                    />
+                    <Route 
+                    path='/signup/confirmation'
+                    component={SignUpConfirmation}
                     />
                     <ProtectedRoute 
                     path='/account'

@@ -1,15 +1,19 @@
 import {myFirebase} from '../firebase/firebase';
 
-export const LOGIN_REQUEST = "LOGIN_REQUEST";
-export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
-export const LOGIN_FAILURE = "LOGIN_FAILURE";
+export const LOGIN_REQUEST = 'LOGIN_REQUEST';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 
-export const LOGOUT_REQUEST = "LOGOUT_REQUEST";
-export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
-export const LOGOUT_FAILURE = "LOGOUT_FAILURE";
+export const LOGOUT_REQUEST = 'LOGOUT_REQUEST';
+export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
+export const LOGOUT_FAILURE = 'LOGOUT_FAILURE';
 
-export const VERIFY_REQUEST = "VERIFY_REQUEST";
-export const VERIFY_SUCCESS = "VERIFY_SUCCESS";
+export const VERIFY_REQUEST = 'VERIFY_REQUEST';
+export const VERIFY_SUCCESS = 'VERIFY_SUCCESS';
+
+export const CREATE_REQUEST = 'CREATE_REQUEST';
+export const CREATE_SUCCESS = 'CREATE_SUCCESS';
+export const CREATE_FAILURE = 'CREATE_FAILURE';
 
 const requestLogin = () => {
     return {
@@ -17,7 +21,7 @@ const requestLogin = () => {
     };
 };
 
-const receiveLogin = user => {
+const receiveLogin = (user) => {
     return {
       type: LOGIN_SUCCESS,
       user
@@ -62,6 +66,25 @@ const verifySuccess = user => {
     };
 };
 
+const requestCreateUser = () => {
+  return {
+    type: CREATE_REQUEST
+  };
+};
+
+const receiveCreateUser = (user) => {
+  return {
+    type: CREATE_SUCCESS,
+    user
+  };
+};
+
+const createUserError = () => {
+  return {
+    type: CREATE_FAILURE
+  };
+};
+
 export const loginUser = (email, password) => dispatch => {
     dispatch(requestLogin());
     myFirebase
@@ -96,4 +119,22 @@ export const verifyAuth = () => dispatch => {
       }
       dispatch(verifySuccess());
     });
+};
+
+export const createUser = (email, password, displayName) => dispatch => {
+    dispatch(requestCreateUser())
+    myFirebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then(userDetails => {
+          return userDetails.user.updateProfile({
+            displayName: displayName
+          })
+        })
+        .then(user => {
+          dispatch(receiveCreateUser(user))
+        })
+        .catch(error => {
+          dispatch(createUserError());
+        });
 };

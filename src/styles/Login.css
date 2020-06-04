@@ -16,3 +16,12 @@
 .button-wrapper {
     margin: 2em 0;
 }
+
+.sign-up {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.sign-up:hover {
+    opacity: 0.8;
+}
