@@ -2,7 +2,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from "react-redux";
 import { logoutUser } from "../actions";
-import { withStyles } from "@material-ui/styles";
 
 import 'styles/NavBar.css';
 
