@@ -4,18 +4,11 @@ import { logoutUser } from "../actions";
 
 const Account = (props) => {
 
-    const handleLogout = () => {
-        const { dispatch } = props;
-        dispatch(logoutUser());
-    };
-
     const { isLoggingOut, logoutError } = props;
 
     return ( 
         <div>
-            <h2>This is your app's protected area.</h2>
-            <p>Any routes here will also be protected</p>
-            <button onClick={handleLogout}>Logout</button>
+            <h2>Account</h2>
             {isLoggingOut && <p>Logging Out....</p>}
             {logoutError && <p>Error logging out</p>}
       </div>
