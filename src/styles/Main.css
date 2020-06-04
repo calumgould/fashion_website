@@ -24,8 +24,10 @@ p {
 
 .button {
     font-family: var(--body-text);
-    font-size: 3em;
-    padding: 0.3em 1em;
+    background-color: var(--primary);
+    color: var(--secondary);
+    font-size: 2em;
+    padding: 0.5em 1em;
     border-radius: 4em;
     border: none;
     cursor: pointer;
@@ -33,6 +35,5 @@ p {
 }
 
 .button:hover {
-    background-color: var(--primary);
-    color: var(--secondary);
+    opacity: 0.9;
 }

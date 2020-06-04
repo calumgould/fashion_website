@@ -1,0 +1,24 @@
+.form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 50%;
+    margin: 0 auto;
+    padding: 2em 3em;
+    border-radius: 2em;
+    background-color: ghostwhite;
+}
+
+.form-wrapper > input {
+    padding: 1em 2em;
+    border: 0;
+    border-radius: 2em;
+    width: 100%;
+    font-size: 1.2em;
+    margin: 1em 0;
+}
+
+
+
+input:-webkit-autofill::first-line {font-size: 1.2em}

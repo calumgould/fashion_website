@@ -11,7 +11,6 @@
     font-size: 1.5em;
     display: inline-block;
     text-decoration: none;
-    color: var(--background);
 }
 
 .link, .login {
@@ -25,6 +24,7 @@
     position: absolute;
     top: 0;
     right: 0;
+    user-select: none;
 }
 
 .login:hover {
