@@ -10,8 +10,11 @@ import {
     CREATE_REQUEST,
     CREATE_SUCCESS,
     CREATE_FAILURE,
+    PROFILE_IMAGE_REQUEST,
+    PROFILE_IMAGE_SUCCESS,
+    PROFILE_IMAGE_FAILURE,
 } from "../actions/";
-  
+
 export default (
     state = {
         isLoggingIn: false,
@@ -20,9 +23,12 @@ export default (
         loginError: false,
         logoutError: false,
         isAuthenticated: false,
-        createError: false,
         isCreated: false,
         isCreating: false,
+        createError: false,
+        isUploaded: false,
+        isUploading: false,
+        uploadError: false,
         user: {},
     },
     action
@@ -82,21 +88,41 @@ export default (
             return {
                 ...state,
                 isCreating: true,
+                isVerifying: true,
             };
         case CREATE_SUCCESS:
             return {
                 ...state,
                 isVerifying: false,
                 isCreating: false,
-                isCreated: true
+                isCreated: true,
+                user: action.user
             };
         case CREATE_FAILURE:
             return {
                 ...state,
-                isVerifying: true,
+                isVerifying: false,
                 createError: true
             };
+        case PROFILE_IMAGE_REQUEST:
+            return {
+                ...state,
+                isUploading: true,
+            };
+        case PROFILE_IMAGE_SUCCESS:
+            return {
+                ...state,
+                isUploading: false,
+                isUploaded: true,
+                user: action.user
+            }
+        case PROFILE_IMAGE_FAILURE:
+            return {
+                ...state,
+                isUploading: false,
+                uploadError: true
+            }
         default:
-        return state;
+            return state;
     }
 };

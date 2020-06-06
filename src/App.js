@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {Router, Route, Switch} from 'react-router-dom';
 import {createBrowserHistory} from 'history';
 import { connect } from "react-redux";
 
@@ -10,7 +10,6 @@ import Home from 'containers/Home';
 import Recipes from 'containers/Recipes';
 import About from 'containers/About';
 import Account from 'containers/Account';
-import Register from 'containers/Register';
 import Login from 'containers/Login';
 import SignUp from 'containers/SignUp';
 import SignUpConfirmation from 'components/SignUpConfirmation';
@@ -46,10 +45,6 @@ const App = (props) => {
                     <Route 
                     path='/login'
                     component={Login}
-                    />
-                    <Route 
-                    path='/register'
-                    component={Register}
                     />
                     <Route 
                     exact path='/signup'
