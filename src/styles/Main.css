@@ -1,5 +1,9 @@
-h1, h2, h3, h4, h5 {
+h1, h2, h3 {
     font-family: var(--header-text);
+    user-select: none;
+}
+
+h4, h5 {
     user-select: none;
 }
   
@@ -15,17 +19,31 @@ h2 {
     text-align: center;
     font-weight: 100;
     color: var(--primary);
-    margin: 0.2em 0;
+    margin: 0.2em 0 0.5em 0;
+}
+
+h3 {
+    font-size: 3em;
+    text-align: center;
+    font-weight: 100;
+    color: black;
+    margin: 0.5em 0;
+}
+
+h4 {
+    font-size: 2em;
+    text-align: center;
+    font-weight: 100;
+    color: black;
+    margin: 0.5em 0;
 }
   
-p {
+p, h4, h5 {
     font-family: var(--body-text);
 }
 
-.button {
+.button, .button-inverted {
     font-family: var(--body-text);
-    background-color: var(--primary);
-    color: var(--secondary);
     font-size: 2em;
     padding: 0.5em 1em;
     border-radius: 4em;
@@ -34,6 +52,16 @@ p {
     outline: none;
 }
 
-.button:hover {
+.button {
+    background-color: var(--primary);
+    color: var(--secondary);
+}
+
+.button:hover, .button-inverted {
     opacity: 0.9;
+}
+
+.button-inverted {
+    background-color: var(--secondary);
+    color: var(--background);
 }
