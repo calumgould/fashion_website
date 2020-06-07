@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
 import { loginUser } from "../actions";
 import { NavLink } from 'react-router-dom';
 
@@ -9,7 +8,7 @@ import 'styles/Login.css';
 
 const Login = (props) => {
   
-  const { loginError, isAuthenticated } = props;
+  const { loginError } = props;
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -24,13 +23,10 @@ const Login = (props) => {
 
   const handleSubmit = () => {
     const { dispatch } = props;
-    dispatch(loginUser(email, password));
-    
+    dispatch(loginUser(email, password))
+    props.history.goBack();
   };
 
-  if (isAuthenticated) {
-    return <Redirect to="/account" />
-  } else {
     return (
       <div className='login-page'>
           <div className='form-wrapper'>
@@ -47,15 +43,12 @@ const Login = (props) => {
           </div>
       </div>
     )
-  }
 
 }
 
 function mapStateToProps(state) {
   return {
-    isLoggingIn: state.auth.isLoggingIn,
     loginError: state.auth.loginError,
-    isAuthenticated: state.auth.isAuthenticated,
   };
 }
 

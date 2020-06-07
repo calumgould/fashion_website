@@ -116,7 +116,9 @@ export const loginUser = (email, password) => dispatch => {
     .then(user => {
       dispatch(receiveLogin(user));
       console.log(user);
-
+    })
+    .then(() => {
+      window.location.reload(true)
     })
     .catch(error => {
       dispatch(loginError());
