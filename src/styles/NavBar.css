@@ -53,3 +53,9 @@
 .link-active {
     text-decoration: underline;
 }
+
+.toggle-button {
+    left: 0;
+    position: absolute;
+    padding: 1em 1.5em;
+}

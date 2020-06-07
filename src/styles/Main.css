@@ -26,7 +26,7 @@ h3 {
     font-size: 3em;
     text-align: center;
     font-weight: 100;
-    color: black;
+    color: var(--secondary);
     margin: 0.5em 0;
 }
 
@@ -42,7 +42,7 @@ p, h4, h5 {
     font-family: var(--body-text);
 }
 
-.button, .button-inverted {
+.button {
     font-family: var(--body-text);
     font-size: 2em;
     padding: 0.5em 1em;
@@ -54,14 +54,9 @@ p, h4, h5 {
 
 .button {
     background-color: var(--primary);
-    color: var(--secondary);
+    color: var(--button-text);
 }
 
 .button:hover, .button-inverted {
     opacity: 0.9;
-}
-
-.button-inverted {
-    background-color: var(--secondary);
-    color: var(--background);
 }

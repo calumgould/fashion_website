@@ -14,7 +14,7 @@ import Login from 'containers/Login';
 import SignUp from 'containers/SignUp';
 
 import 'styles/Main.css';
-import 'index.css';
+import 'styles/index.css';
 
 const history = createBrowserHistory();
 

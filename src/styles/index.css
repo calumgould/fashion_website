@@ -1,13 +1,13 @@
 @font-face {
   font-family: 'Always Sans';
   src: local('Always Sans'), local('AlwaysSans'),
-    url('./assets/fonts/Always_Sans_Font.otf') format('opentype')
+    url('../assets/fonts/Always_Sans_Font.otf') format('opentype')
 }
 
 @font-face {
   font-family: 'Always Script';
   src: local('Always Script'), local('AlwaysScript'),
-    url('./assets/fonts/Always_Script_Font.otf') format('opentype')
+    url('../assets/fonts/Always_Script_Font.otf') format('opentype')
 }
 
 * {
@@ -19,9 +19,17 @@
 :root {
   --primary: #FF0266;
   --secondary: #FFFFFF;
+  --secondary-inverted: #000000;
   --background: #212121;
+  --background-inverted: #FFFFFF;
+  --button-text: #FFFFFF;
   --header-text: 'Always Script';
   --body-text: 'Always Sans';
+}
+
+body {
+  background-color: var(--background);
+  color: var(--secondary);
 }
 
 
