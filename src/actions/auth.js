@@ -162,6 +162,9 @@ export const createUser = (email, password, displayName) => dispatch => {
     .then(user => {
       dispatch(receiveCreateUser(user))
     })
+    .then(() => {
+      window.location.reload(true)
+    })
     .catch(error => {
       dispatch(createUserError());
     });

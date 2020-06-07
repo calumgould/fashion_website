@@ -25,6 +25,7 @@ const Login = (props) => {
   const handleSubmit = () => {
     const { dispatch } = props;
     dispatch(loginUser(email, password));
+    
   };
 
   if (isAuthenticated) {

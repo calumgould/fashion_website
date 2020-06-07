@@ -71,7 +71,7 @@ const Account = (props) => {
     <div className='edit-wrapper'>
       {showProgress ? <progress value={uploadProgress} max='100' /> : null}
       <div>
-        <label className='upload-button' for='upload'>
+        <label className='upload-button'>
           <input id='upload' type='file' name='profile-image' onChange={handleDisplayImage} />
           Choose File
         </label>

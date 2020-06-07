@@ -27,8 +27,8 @@ const SignUp = (props) => {
   
     const handleSubmit = () => {
         const { dispatch } = props;
-        dispatch(createUser(email, password, displayName));
-        props.history.push('/signup/confirmation');
+        dispatch(createUser(email, password, displayName))
+        props.history.push('/account');
     };
 
     return ( 
