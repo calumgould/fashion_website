@@ -19,6 +19,9 @@ export const PROFILE_IMAGE_REQUEST = 'PROFILE_IMAGE_REQUEST';
 export const PROFILE_IMAGE_SUCCESS = 'PROFILE_IMAGE_SUCCESS';
 export const PROFILE_IMAGE_FAILURE = 'PROFILE_IMAGE_FAILURE';
 
+export const TOGGLE_SUCCESS = 'TOGGLE_SUCCESS';
+
+
 const requestLogin = () => {
   return {
     type: LOGIN_REQUEST
@@ -108,6 +111,13 @@ const profileImageUploadError = () => {
   };
 };
 
+const receiveModeToggle = (darkMode) => {
+  return {
+    type: TOGGLE_SUCCESS,
+    darkMode
+  };
+};
+
 export const loginUser = (email, password) => dispatch => {
   dispatch(requestLogin());
   myFirebase
@@ -186,4 +196,9 @@ export const uploadUserProfileImage = (imageURL) => dispatch => {
         dispatch(profileImageUploadError())
       }
     })
+};
+
+export const toggleDarkMode = (darkMode) => dispatch => {
+  console.log('toggleDarkMode: ', darkMode);
+  dispatch(receiveModeToggle(darkMode));
 };

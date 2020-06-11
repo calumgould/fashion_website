@@ -13,6 +13,7 @@ import {
     PROFILE_IMAGE_REQUEST,
     PROFILE_IMAGE_SUCCESS,
     PROFILE_IMAGE_FAILURE,
+    TOGGLE_SUCCESS,
 } from "../actions/";
 
 export default (
@@ -30,6 +31,7 @@ export default (
         isUploading: false,
         uploadError: false,
         user: {},
+        darkMode: true,
     },
     action
 ) => {
@@ -115,13 +117,18 @@ export default (
                 isUploading: false,
                 isUploaded: true,
                 user: action.user
-            }
+            };
         case PROFILE_IMAGE_FAILURE:
             return {
                 ...state,
                 isUploading: false,
                 uploadError: true
-            }
+            };
+        case TOGGLE_SUCCESS:
+            return {
+                ...state,
+                darkMode: action.darkMode
+            };
         default:
             return state;
     }

@@ -8,8 +8,11 @@ const Recipes = (props) => {
     return ( 
         <div>
             <h2>Recipes</h2>
-            {user.displayName}
+            {user.displayName && 
+            <h4>Welcome back {user.displayName}!</h4>
+            }
         </div>
+       
      );
 }
  
@@ -19,4 +22,4 @@ function mapStateToProps(state) {
     };
   }
   
-  export default (connect(mapStateToProps)(Recipes));
+export default (connect(mapStateToProps)(Recipes));

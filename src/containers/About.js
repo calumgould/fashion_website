@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from "react-redux";
 
-const About = () => {
+const About = (props) => {
+
+    const { darkMode } = props;
+
     return ( 
         <>
             <h2>About</h2>
         </>
-     );
+    );
 }
  
-export default About;
+function mapStateToProps(state) {
+    return {
+      darkMode: state.auth.darkMode,
+    };
+  }
+  
+export default (connect(mapStateToProps)(About));

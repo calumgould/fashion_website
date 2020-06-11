@@ -1,38 +1,46 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from "react-redux";
-import { logoutUser } from "../actions";
 import Switch from 'react-switch';
+
+import { logoutUser } from "../actions";
+import { toggleDarkMode } from '../actions';
 
 import 'styles/NavBar.css';
 
 const NavBar = (props) => {
 
-    const [darkMode, setDarkMode] = useState(true)
+    const { dispatch, darkMode, isAuthenticated } = props;
 
     const handleLogout = () => {
-        const { dispatch } = props;
         dispatch(logoutUser());
     };
 
     useEffect(() => {
-        if(darkMode === true) {
-            document.documentElement.style.setProperty('--primary', '#FF0266')
+        if(darkMode) {
+            document.documentElement.style.setProperty('--primary', '#FFD226')
             document.documentElement.style.setProperty('--secondary', '#FFFFFF')
             document.documentElement.style.setProperty('--secondary-inverted', '#000000')
             document.documentElement.style.setProperty('--background', '#212121')
             document.documentElement.style.setProperty('--background-inverted', '#FFFFFF')
+            document.documentElement.style.setProperty('--button-text', '#000000')
         } else {
-            document.documentElement.style.setProperty('--primary', '#FF0266')
+            document.documentElement.style.setProperty('--primary', '#FFD226')
             document.documentElement.style.setProperty('--secondary', '#000000')
             document.documentElement.style.setProperty('--secondary-inverted', '#FFFFFF')
             document.documentElement.style.setProperty('--background', '#FFFFFF')
             document.documentElement.style.setProperty('--background-inverted', '#212121')
+            document.documentElement.style.setProperty('--button-text', '#FFFFFF')
         }
     }, [darkMode])
+
+    const handleModeChange = (event) => {
+        dispatch(toggleDarkMode(event))
+        console.log('handleModeChange: ', darkMode);
+    }
     
     const toggleLoginLink = () => {
-        if(props.isAuthenticated) {
+        if(isAuthenticated) {
             return (
                 <li>
                     <NavLink 
@@ -63,9 +71,9 @@ const NavBar = (props) => {
                 <li className='toggle-button'>
                     <p id='no-click-label'></p>
                         <Switch
-                            onChange={(checked) => setDarkMode(checked)}
+                            onChange={handleModeChange}
                             checked={darkMode}
-                            onColor='#FF0266'
+                            onColor='#FFD226'
                             offColor='#D3D3D3'
                             onHandleColor='#F8F8FF'
                             offHandleColor='#212121'
@@ -125,9 +133,8 @@ const NavBar = (props) => {
 
 function mapStateToProps(state) {
     return {
-      isLoggingIn: state.auth.isLoggingIn,
-      loginError: state.auth.loginError,
-      isAuthenticated: state.auth.isAuthenticated
+      darkMode: state.auth.darkMode,
+      isAuthenticated: state.auth.isAuthenticated,
     };
   }
   

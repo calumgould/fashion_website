@@ -83,7 +83,7 @@ const Account = (props) => {
   )
 
  
-  if(user.displayName !== null) return (
+  return (
     <div>
       <h2>Account</h2>
       <div className='account-page'>
@@ -92,13 +92,13 @@ const Account = (props) => {
           <div className='details-text'>
             <h3>Your Details</h3>
             <h4>Display Name</h4>
-            <p>{user.displayName}</p>
+            {user.displayName && <p>{user.displayName}</p>}
             <h4>Email</h4>
-            <p>{user.email}</p>
+            {user.email && <p>{user.email}</p>}
             <h4>Date Created</h4>
-            <p>{formatDate(user.metadata.creationTime)}</p>
+            {user.metadata.creationTime && <p>{formatDate(user.metadata.creationTime)}</p>}
             <h4>Last Login</h4>
-            <p>{formatDate(user.metadata.lastSignInTime)}</p>
+            {user.metadata.lastSignInTime && <p>{formatDate(user.metadata.lastSignInTime)}</p>}
             <button className='button'>Edit Details</button>
 
           </div>
