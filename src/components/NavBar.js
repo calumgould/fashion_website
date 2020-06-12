@@ -133,7 +133,7 @@ const NavBar = (props) => {
 
 function mapStateToProps(state) {
     return {
-      darkMode: state.auth.darkMode,
+      darkMode: state.userActions.darkMode,
       isAuthenticated: state.auth.isAuthenticated,
     };
   }

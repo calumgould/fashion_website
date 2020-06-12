@@ -1,9 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from "react-redux";
 
-const About = (props) => {
-
-    const { darkMode } = props;
+const About = () => {
 
     return ( 
         <>
@@ -14,7 +12,7 @@ const About = (props) => {
  
 function mapStateToProps(state) {
     return {
-      darkMode: state.auth.darkMode,
+
     };
   }
   

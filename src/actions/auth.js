@@ -19,7 +19,6 @@ export const PROFILE_IMAGE_REQUEST = 'PROFILE_IMAGE_REQUEST';
 export const PROFILE_IMAGE_SUCCESS = 'PROFILE_IMAGE_SUCCESS';
 export const PROFILE_IMAGE_FAILURE = 'PROFILE_IMAGE_FAILURE';
 
-export const TOGGLE_SUCCESS = 'TOGGLE_SUCCESS';
 
 
 const requestLogin = () => {
@@ -111,12 +110,7 @@ const profileImageUploadError = () => {
   };
 };
 
-const receiveModeToggle = (darkMode) => {
-  return {
-    type: TOGGLE_SUCCESS,
-    darkMode
-  };
-};
+
 
 export const loginUser = (email, password) => dispatch => {
   dispatch(requestLogin());
@@ -125,7 +119,6 @@ export const loginUser = (email, password) => dispatch => {
     .signInWithEmailAndPassword(email, password)
     .then(user => {
       dispatch(receiveLogin(user));
-      console.log(user);
     })
     .then(() => {
       window.location.reload(true)
@@ -198,7 +191,3 @@ export const uploadUserProfileImage = (imageURL) => dispatch => {
     })
 };
 
-export const toggleDarkMode = (darkMode) => dispatch => {
-  console.log('toggleDarkMode: ', darkMode);
-  dispatch(receiveModeToggle(darkMode));
-};
