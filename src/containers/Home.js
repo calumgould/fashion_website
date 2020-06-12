@@ -11,7 +11,7 @@ const Home = ({history}) => {
                 <div className='button-wrapper'>
                     <button 
                     className='button'
-                    onClick={() => history.push('/recipes')}>Enter
+                    onClick={() => history.push('/shop')}>Enter
                     </button>
                 </div>
             </div>

@@ -97,8 +97,8 @@ const NavBar = (props) => {
                     <NavLink 
                     className='link'
                     activeClassName='link-active' 
-                    to="/recipes">
-                    <span>Recipes</span>
+                    to="/shop">
+                    <span>Shop</span>
                     </NavLink>
                 </li>
                 <li>

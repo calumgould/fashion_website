@@ -1,10 +1,12 @@
 import {
-    TOGGLE_DARK_MODE
+    TOGGLE_DARK_MODE,
+    SELECT_PRODUCT
 } from '../actions/'
 
 export default (
     state = {
         darkMode: true,
+        selectedProduct: null
     },
     action
 ) => {
@@ -14,6 +16,11 @@ export default (
                 ...state,
                 darkMode: action.darkMode
             };
+        case SELECT_PRODUCT:
+            return {
+                ...state,
+                selectedProduct: action.product
+            }
         default:
             return state;
     }

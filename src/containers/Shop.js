@@ -1,16 +1,17 @@
 import React from 'react';
 import { connect } from "react-redux";
 
-const Recipes = (props) => {
+import Products from 'components/Products';
 
-    const { user } = props;
+const Shop = ({user, history}) => {
 
     return ( 
         <div>
-            <h2>Recipes</h2>
+            <h2>Shop</h2>
             {user.displayName && 
             <h4>Welcome back {user.displayName}!</h4>
             }
+            <Products history={history} />
         </div>
        
      );
@@ -22,4 +23,4 @@ function mapStateToProps(state) {
     };
   }
   
-export default (connect(mapStateToProps)(Recipes));
+export default (connect(mapStateToProps)(Shop));

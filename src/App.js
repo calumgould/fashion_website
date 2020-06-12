@@ -1,17 +1,18 @@
 import React from 'react';
 import {Router, Route, Switch} from 'react-router-dom';
 import {createBrowserHistory} from 'history';
-import { connect } from "react-redux";
+import {connect} from "react-redux";
 
 import ProtectedRoute from 'components/ProtectedRoute';
 import ScrollToTop from 'components/ScrollToTop';
 import NavBar from 'components/NavBar';
 import Home from 'containers/Home';
-import Recipes from 'containers/Recipes';
+import Shop from 'containers/Shop';
 import About from 'containers/About';
 import Account from 'containers/Account';
 import Login from 'containers/Login';
 import SignUp from 'containers/SignUp';
+import Checkout from 'containers/Checkout';
 
 import 'styles/Main.css';
 import 'styles/index.css';
@@ -19,7 +20,9 @@ import 'styles/index.css';
 const history = createBrowserHistory();
 
 const App = (props) => {
+
     const { isAuthenticated, isVerifying } = props;
+
     return ( 
         <>
             <Router history={history}>
@@ -34,12 +37,16 @@ const App = (props) => {
                     component={Home}
                     />
                     <Route 
-                    path='/recipes'
-                    component={Recipes}
+                    path='/shop'
+                    component={Shop}
                     />
                     <Route 
                     path='/about'
                     component={About}
+                    />
+                    <Route 
+                    path='/checkout'
+                    component={Checkout}
                     />
                     <Route 
                     path='/login'
