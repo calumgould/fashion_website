@@ -106,7 +106,7 @@ const NavBar = (props) => {
                     className='logo-link'
                     activeClassName='logo-link-active'
                     to="/">
-                    Feasty
+                    Clothd
                     </NavLink>
                 </li>
                 <li>

@@ -1,13 +1,19 @@
 @font-face {
-  font-family: 'Always Sans';
-  src: local('Always Sans'), local('AlwaysSans'),
-    url('../assets/fonts/Always_Sans_Font.otf') format('opentype')
+  font-family: 'Avocado Thin';
+  src: local('AvocadoThin'), local('Avocado Thin'),
+    url('../assets/fonts/avocado_sans_thin.otf') format('opentype')
 }
 
 @font-face {
-  font-family: 'Always Script';
-  src: local('Always Script'), local('AlwaysScript'),
-    url('../assets/fonts/Always_Script_Font.otf') format('opentype')
+  font-family: 'Avocado Regular';
+  src: local('AvocadoRegular'), local('Avocado Regular'),
+    url('../assets/fonts/avocado_sans_regular.otf') format('opentype')
+}
+
+@font-face {
+  font-family: 'Avocado Bold';
+  src: local('AvocadoBold'), local('Avocado Bold'),
+    url('../assets/fonts/avocado_sans_bold.otf') format('opentype')
 }
 
 * {
@@ -23,8 +29,8 @@
   --background: #212121;
   --background-inverted: #FFFFFF;
   --button-text: #FFFFFF;
-  --header-text: 'Always Script';
-  --body-text: 'Always Sans';
+  --header-text: 'Avocado Bold';
+  --body-text: 'Avocado Thin';
 }
 
 body {
