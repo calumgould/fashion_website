@@ -21,7 +21,7 @@ const Products = ({history, dispatch}) => {
                     PURCHASE
                 </button>
             </section>
-            <img src={product.image} alt={product.name} />
+            <img src={product.img} alt={product.name} />
         </div>
     ))
 }

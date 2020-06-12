@@ -1,18 +1,18 @@
 export const products = [
     {
-      name: 'Rubber Duck',
-      desc: `Rubber ducks can lay as many eggs as the best chicken layers, and they are fun to watch with their antics in your backyard, your barnyard, or your pond.`,
-      price: 9.99,
+      name: 'Red Flower Buckle Dress',
+      desc: `Vivid red dress, with floral patterns with large, weaved buckle at the waist`,
+      price: 39.99,
       img:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSqkN8wkHiAuT2FQ14AsJFgihZDzKmS6OHQ6eMiC63rW8CRDcbK',
-      id: 100
+        'https://images.unsplash.com/photo-1572804013427-4d7ca7268217?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2905&q=80',
+      id: 1
     },
     {
-      name: 'Chilli Sauce',
-      desc: `This Chilli Sauce goes well with some nice roast rubber duck. Flavored with the best spices and the hottest chillis, you can rest assured of a tasty Sunday rubber roast.`,
-      price: 12.99,
+      name: 'Skeleton T-Shirt',
+      desc: `Black, casual crop top with skeleton hand peace sign `,
+      price: 19.99,
       img:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRTREm1dEzdI__xc6O8eAz5-4s88SP-Gg9dWYMkBKltGMi84RW5',
-      id: 101
+        'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80',
+      id: 2
     }
   ]
