@@ -5,13 +5,18 @@
     font-family: var(--body-text);
     text-decoration: none;
     text-align: center;
+    display: flex;
 }
 
 .nav li {
     font-size: 1.5em;
     display: inline-block;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
+    color: var(--secondary);
 }
+
 
 .link, .login {
     text-decoration: none;
@@ -37,7 +42,7 @@
     font-family: var(--header-text);
     color: var(--primary);
     font-size: 1.5em;
-    padding: 0 1em 0.2em 1em;
+    padding: 0 1em 0 1em;
 }
 
 .link:visited {
@@ -52,6 +57,10 @@
 
 .link-active {
     text-decoration: underline;
+}
+
+.link-active span {
+    color: var(--primary);
 }
 
 .toggle-button {

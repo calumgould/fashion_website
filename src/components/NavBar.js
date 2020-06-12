@@ -90,7 +90,7 @@ const NavBar = (props) => {
                     className='link'
                     activeClassName='link-active'
                     to="/" exact>
-                    Home
+                    <span>Home</span>
                     </NavLink>
                 </li>
                 <li>
@@ -98,7 +98,7 @@ const NavBar = (props) => {
                     className='link'
                     activeClassName='link-active' 
                     to="/recipes">
-                    Recipes
+                    <span>Recipes</span>
                     </NavLink>
                 </li>
                 <li>
@@ -106,7 +106,7 @@ const NavBar = (props) => {
                     className='logo-link'
                     activeClassName='logo-link-active'
                     to="/">
-                    Clothd
+                    trend.
                     </NavLink>
                 </li>
                 <li>
@@ -114,7 +114,7 @@ const NavBar = (props) => {
                     className='link'
                     activeClassName='link-active'
                     to="/about">
-                    About
+                    <span>About</span>
                     </NavLink>
                 </li>   
                 <li>
@@ -122,7 +122,7 @@ const NavBar = (props) => {
                     className='link'
                     activeClassName='link-active'
                     to="/account">
-                    Account
+                    <span>Account</span>
                     </NavLink>
                 </li>
                 {toggleLoginLink()}

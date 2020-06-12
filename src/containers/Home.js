@@ -7,7 +7,7 @@ const Home = ({history}) => {
     return ( 
         <div className='page-background'>
             <div className='home-page'>
-                <h1 className='logo'>Clothd</h1>
+                <h1 className='logo'>trend.</h1>
                 <div className='button-wrapper'>
                     <button 
                     className='button'
