@@ -60,7 +60,7 @@
 }
 
 .link-active span {
-    color: var(--primary);
+    color: var(--secondary);
 }
 
 .toggle-button {
