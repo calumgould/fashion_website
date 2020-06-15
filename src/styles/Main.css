@@ -71,6 +71,7 @@ table {
     width: 90%;
     margin: 0 auto;
     font-size: 1.5em;
+    text-align: center;
 }
 
 table, th, td {
@@ -90,4 +91,12 @@ td {
 
 td > img {
     width: 20vw;
+}
+
+.table-image {
+    height: 20vw;
+    width: 10vw;
+    background-position: center top;
+    background-size: cover;
+    background-repeat: no-repeat;
 }

@@ -1,15 +1,12 @@
 import React from 'react';
 import { connect } from "react-redux";
 
-
 const Cart = ({cart}) => {
 
     const generateCartItems = cart.map(cartItem => {
         return (
             <tr key={cartItem.item_id}>
-                <td>
-                    <img src={cartItem.item_img} alt={cartItem.item_name} />
-                </td>
+                <td className='table-image' style={{backgroundImage: `url(${cartItem.item_img})`}} />
                 <td>{cartItem.item_name}</td>
                 <td>{cartItem.item_desc}</td>
                 <td>{cartItem.quantity}</td>
