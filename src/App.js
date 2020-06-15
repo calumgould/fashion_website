@@ -45,16 +45,16 @@ const App = (props) => {
                     component={About}
                     />
                     <Route 
-                    path='/checkout'
-                    component={Checkout}
-                    />
-                    <Route 
                     path='/login'
                     component={Login}
                     />
                     <Route 
                     exact path='/signup'
                     component={SignUp}
+                    />
+                    <Route 
+                    path='/checkout'
+                    component={Checkout}
                     />
                     <ProtectedRoute 
                     path='/account'

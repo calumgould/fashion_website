@@ -1,11 +1,18 @@
 import React from 'react';
+import { loadStripe } from '@stripe/stripe-js'
+import { Elements } from '@stripe/react-stripe-js'
 
-const Checkout = () => {
+import CheckoutForm from 'components/CheckoutForm';
+
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY)
+
+const Checkout = ({history}) => {
+
     return ( 
-        <div>
-            <h2>Checkout</h2>
-        </div>
-     );
+        <Elements stripe={stripePromise}>
+            <CheckoutForm history={history}/>
+        </Elements>
+    );
 }
  
 export default Checkout;

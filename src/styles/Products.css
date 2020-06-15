@@ -1,0 +1,16 @@
+.products-container {
+    width: 90%;
+    margin: 0 5%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.product {
+    max-width: 30%;
+}
+
+.product > img {
+    width: 100%;
+}

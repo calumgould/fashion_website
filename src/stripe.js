@@ -1,27 +1,24 @@
-const stripe = require('stripe')('sk_test_51GtKN1JM5drvFu6s6OyoVNMr4Oq6K8g4iWjEHBhRLbHmaTQJ39QRZ1hA24Glr5MIA6lCrO9xmBlCI1xfaw72RszX00ytDVORks')
+import Stripe from 'stripe';
 
-async function postCharge(req, res) {
-    try {
-        const { amount, source, receipt_email} = req.body
+const stripe = new Stripe(process.env.REACT_APP_STRIPE_SECRET_KEY)
 
-        const charge = await stripe.charges.create({
-            amount,
-            current: 'gbp',
-            source,
-            receipt_email
-        })
+export default async (req, res) => {
+    const {amount} = req.body;
+    
+    if (req.method === 'POST') {
+        try {
+            const paymentIntent = await stripe.paymentIntents.create({
+                amount,
+                currency: 'gbp',
+            })
+            console.log(paymentIntent);
 
-        if(!charge) throw new Error('charge unsuccessful')
-
-        res.status(200).json({
-            message: 'charge posted successfully',
-            charge
-        })
-    } catch (error) {
-        res.status(500).json({
-            message: error.message
-        })
+            res.status(200).send(paymentIntent.client_secret); 
+        } catch(error) {
+            res.status(500).json({ statusCode: 500, message: error.message })
+        }
+    } else {
+        res.setHeader('Allow', 'POST')
+        res.status(405).end('Method Not Allowed')
     }
 }
-
-module.exports = postCharge
