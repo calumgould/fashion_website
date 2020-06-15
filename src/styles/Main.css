@@ -66,3 +66,28 @@ p, h4, h5 {
 .button:hover {
     opacity: 0.9;
 }
+
+table {
+    width: 90%;
+    margin: 0 auto;
+    font-size: 1.5em;
+}
+
+table, th, td {
+    border: 1px solid var(--primary);
+    border-collapse: collapse;
+}
+
+th {
+    padding: 1em 2em;
+    font-family: var(--header-text);
+}
+
+td {
+    padding: 0.5em 1em;
+    font-family: var(--body-text);
+}
+
+td > img {
+    width: 20vw;
+}
