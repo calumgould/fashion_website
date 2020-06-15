@@ -18,21 +18,49 @@
 }
 
 
-.link, .login {
+.link, .account, .cart {
     text-decoration: none;
     display: inline-block;
     color: inherit;
     padding: 1em 1.5em;
 }
 
-.login {
+.account {
     position: absolute;
     top: 0;
     right: 0;
     user-select: none;
 }
 
-.login:hover {
+.cart {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-right: 8%;
+    user-select: none;
+}
+
+.cart-counter {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 7%;
+    margin-top: 1%;
+    user-select: none;
+    border-radius: 100%;
+    background-color: var(--primary);
+    font-size: 0.7em;
+    padding: 0.1em 0.5em 0.15em 0.5em;
+    text-align: center;
+    color: var(--secondary-inverted);
+    font-family: 'Avocado Regular';
+}
+
+.icon-active {
+    color: var(--primary);
+}
+
+.account:hover, .cart:hover {
     color: var(--primary);
 }
 

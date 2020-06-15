@@ -13,6 +13,7 @@ import Account from 'containers/Account';
 import Login from 'containers/Login';
 import SignUp from 'containers/SignUp';
 import Checkout from 'containers/Checkout';
+import Cart from 'containers/Cart';
 
 import 'styles/Main.css';
 import 'styles/index.css';
@@ -51,6 +52,10 @@ const App = (props) => {
                     <Route 
                     exact path='/signup'
                     component={SignUp}
+                    />
+                    <Route 
+                    path='/cart'
+                    component={Cart}
                     />
                     <Route 
                     path='/checkout'

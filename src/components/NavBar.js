@@ -6,11 +6,12 @@ import Switch from 'react-switch';
 import { logoutUser } from "../actions";
 import { toggleDarkMode } from '../actions';
 
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+
 import 'styles/NavBar.css';
 
-const NavBar = (props) => {
-
-    const { dispatch, darkMode, isAuthenticated } = props;
+const NavBar = ({dispatch, darkMode, isAuthenticated, cart}) => {
 
     const handleLogout = () => {
         dispatch(logoutUser());
@@ -22,14 +23,18 @@ const NavBar = (props) => {
             document.documentElement.style.setProperty('--secondary', '#FFFFFF')
             document.documentElement.style.setProperty('--secondary-inverted', '#000000')
             document.documentElement.style.setProperty('--background', '#212121')
+            document.documentElement.style.setProperty('--background-lighter', '#262626')
             document.documentElement.style.setProperty('--background-inverted', '#FFFFFF')
+            document.documentElement.style.setProperty('--background-inverted-lighter', '#f2f2f2')
             document.documentElement.style.setProperty('--button-text', '#000000')
         } else {
             document.documentElement.style.setProperty('--primary', '#FFD226')
             document.documentElement.style.setProperty('--secondary', '#000000')
             document.documentElement.style.setProperty('--secondary-inverted', '#FFFFFF')
             document.documentElement.style.setProperty('--background', '#FFFFFF')
+            document.documentElement.style.setProperty('--background-lighter', '#f2f2f2')
             document.documentElement.style.setProperty('--background-inverted', '#212121')
+            document.documentElement.style.setProperty('--background-inverted-lighter', '#262626')
             document.documentElement.style.setProperty('--button-text', '#FFFFFF')
         }
     }, [darkMode])
@@ -44,7 +49,7 @@ const NavBar = (props) => {
             return (
                 <li>
                     <NavLink 
-                    className='login'
+                    className='link'
                     to="/"
                     onClick={handleLogout}>
                     Logout
@@ -55,7 +60,7 @@ const NavBar = (props) => {
             return (
                 <li>
                     <NavLink 
-                    className='login'
+                    className='link'
                     activeClassName='link-active'
                     to="/login">
                     Login
@@ -117,15 +122,25 @@ const NavBar = (props) => {
                     <span>About</span>
                     </NavLink>
                 </li>   
+                {toggleLoginLink()}
                 <li>
                     <NavLink 
-                    className='link'
-                    activeClassName='link-active'
+                    className='cart'
+                    activeClassName='icon-active'
+                    to="/cart">
+                    <ShoppingCartIcon fontSize='large'/>
+                    </NavLink>
+                    {cart.length > 0 && <p className='cart-counter'>{cart.length}</p>}
+                </li>
+                <li>
+                    <NavLink 
+                    className='account'
+                    activeClassName='icon-active'
                     to="/account">
-                    <span>Account</span>
+                    <AccountCircleIcon fontSize='large'/>
                     </NavLink>
                 </li>
-                {toggleLoginLink()}
+                
             </ul>
         </div>
     );
@@ -135,6 +150,7 @@ function mapStateToProps(state) {
     return {
       darkMode: state.userActions.darkMode,
       isAuthenticated: state.auth.isAuthenticated,
+      cart: state.userActions.cart
     };
   }
   

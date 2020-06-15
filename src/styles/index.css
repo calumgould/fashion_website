@@ -27,7 +27,9 @@
   --secondary: #FFFFFF;
   --secondary-inverted: #000000;
   --background: #212121;
+  --background-lighter: #262626;
   --background-inverted: #FFFFFF;
+  --background-inverted-lighter: #f2f2f2;
   --button-text: #FFFFFF;
   --header-text: 'Avocado Bold';
   --body-text: 'Avocado Thin';
