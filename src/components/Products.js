@@ -1,35 +1,40 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from "react-redux";
 
-import {selectProduct, addItemToCart} from 'actions';
+import {updateCart} from 'actions';
 import {products} from 'helpers/products';
 
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 
 import 'styles/Products.css'
 
-const Products = ({dispatch, history, cart}) => {
-
-    // const handlePurchase = (product) => {
-    //     console.log('PRODUCT', product);
-    //     dispatch(selectProduct(product))
-    //     history.push('/checkout')
-    // }
+const Products = ({dispatch, cart}) => {
 
     const addToCart = (product) => {
-        dispatch(addItemToCart(product));
-    }
 
-    useEffect(() => {
-        console.log('CART', cart);
-    }, [cart])
+            const index = cart.findIndex((cartProduct) => cartProduct.product_id === product.product_id)
+            
+            if (index === -1) {
+                cart.push({
+                    ...product,
+                    quantity: 1
+                })
+                dispatch(updateCart(cart))
+            } else {
+                cart[index] = ({
+                    ...product,
+                    quantity: product.quantity ++
+                })
+                dispatch(updateCart(cart))
+            }
+    }
     
-    const productNodes =  products.map(product => { 
+    const productNodes = products.map(product => { 
         return (
-        <div className='product' key={product.item_id}>
-            <div className='product-image' style={{backgroundImage: `url(${product.item_img})`}} />
+        <div className='product' key={product.product_id}>
+            <div className='product-image' style={{backgroundImage: `url(${product.product_img})`}} />
             <div className='product-text'>
-            <h4>{product.item_name}</h4>
+            <h4>{product.product_name}</h4>
                 <div className='product-info-wrapper'>
                     <h4>{'$' + product.price}</h4>
                 </div>
@@ -46,8 +51,6 @@ const Products = ({dispatch, history, cart}) => {
             {productNodes}
         </div>
     )
-
-    
 }
  
 function mapStateToProps(state) {

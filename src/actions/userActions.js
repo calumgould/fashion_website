@@ -1,6 +1,6 @@
 export const TOGGLE_DARK_MODE = 'TOGGLE_DARK_MODE';
 export const SELECT_PRODUCT = 'SELECT_PRODUCT';
-export const ADD_ITEM_TO_CART = 'ADD_ITEM_TO_CART';
+export const UPDATE_CART = 'UPDATE_CART';
 
 export const toggleDarkMode = (darkMode) => dispatch => {
     dispatch({
@@ -16,9 +16,9 @@ export const selectProduct = (product) => dispatch => {
     });
 };
 
-export const addItemToCart = (item) => dispatch => {
+export const updateCart = (updatedCart) => dispatch => {
     dispatch({
-        type: ADD_ITEM_TO_CART,
-        item
+        type: UPDATE_CART,
+        updatedCart
     })
 }

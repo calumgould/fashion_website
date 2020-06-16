@@ -1,14 +1,15 @@
 import {
     TOGGLE_DARK_MODE,
     SELECT_PRODUCT,
-    ADD_ITEM_TO_CART
+    UPDATE_CART,
 } from '../actions/'
 
 export default (
     state = {
         darkMode: true,
         selectedProduct: null,
-        cart: []
+        cart: [],
+        cartCount: 0,
     },
     action
 ) => {
@@ -23,10 +24,11 @@ export default (
                 ...state,
                 selectedProduct: action.product
             }
-        case ADD_ITEM_TO_CART:
+        case UPDATE_CART:
             return {
                 ...state,
-                cart: [...state.cart, action.item]
+                cart: action.updatedCart,
+                cartCount: action.updatedCart.length
             }
         default:
             return state;

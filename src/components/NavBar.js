@@ -11,7 +11,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 import 'styles/NavBar.css';
 
-const NavBar = ({dispatch, darkMode, isAuthenticated, cart}) => {
+const NavBar = ({dispatch, darkMode, isAuthenticated, cart, cartCount}) => {
 
     const handleLogout = () => {
         dispatch(logoutUser());
@@ -150,7 +150,8 @@ function mapStateToProps(state) {
     return {
       darkMode: state.userActions.darkMode,
       isAuthenticated: state.auth.isAuthenticated,
-      cart: state.userActions.cart
+      cart: state.userActions.cart,
+      cartCount: state.userActions.cartCount
     };
   }
   
