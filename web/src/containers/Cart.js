@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 
-const Cart = ({cart}) => {
+const Cart = ({cart, history}) => {
 
     const generateCartItems = cart.map(cartItem => {
         return (
@@ -32,6 +32,9 @@ const Cart = ({cart}) => {
                     {generateCartItems}
                 </tbody>
             </table>
+            <div className='button-wrapper'>
+                <button onClick={() => history.push('/checkout')} className='button'>Checkout</button>
+            </div>
         </div>
      )} else {
          return (
