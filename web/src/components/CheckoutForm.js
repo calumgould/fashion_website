@@ -9,7 +9,7 @@ import axios from 'axios';
 
 import 'styles/Stripe.css'
 
-const CheckoutForm = ({cart, history}) => {
+const CheckoutForm = ({cart}) => {
 
     const stripe = useStripe();
     const elements = useElements();
@@ -31,27 +31,6 @@ const CheckoutForm = ({cart, history}) => {
 
         console.log('stripe result', result);
 
-
-
-        // const { error, paymentMethod } = await stripe.createPaymentMethod({
-        //     type: 'card',
-        //     card: elements.getElement(CardElement)
-        // })
-
-        // if (!error) {
-        //     console.log(paymentMethod);
-        //     try {
-        //         const {data} = await axios.post('/secret', {
-        //             amount: calculateTotalCartPrice() * 100
-        //         })
-        //         .then(res => {
-        //             console.log(res);
-        //             console.log(res.data);
-        //         })
-        //     } catch (error) {
-        //         console.log('ERROR', error);
-        //     }
-        // }
     }
 
     const calculateTotalCartPrice = () => {

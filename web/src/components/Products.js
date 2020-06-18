@@ -8,7 +8,7 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 
 import 'styles/Products.css'
 
-const Products = ({dispatch, cart}) => {
+const Products = ({dispatch, cart, user}) => {
 
     const addToCart = (product) => {
 
@@ -19,13 +19,13 @@ const Products = ({dispatch, cart}) => {
                     ...product,
                     quantity: 1
                 })
-                dispatch(updateCart(cart))
+                dispatch(updateCart(cart, user))
             } else {
                 cart[index] = ({
                     ...product,
                     quantity: product.quantity ++
                 })
-                dispatch(updateCart(cart))
+                dispatch(updateCart(cart, user))
             }
     }
     
@@ -55,7 +55,8 @@ const Products = ({dispatch, cart}) => {
  
 function mapStateToProps(state) {
     return {
-        cart: state.userActions.cart
+        cart: state.userActions.cart,
+        user: state.auth.user
     };
   }
   

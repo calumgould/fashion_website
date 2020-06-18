@@ -28,7 +28,9 @@ const SignUp = (props) => {
     const handleSubmit = () => {
         const { dispatch } = props;
         dispatch(createUser(email, password, displayName))
-        props.history.push('/account');
+        setTimeout(() => {
+            props.history.push('/account')
+        }, 1000)
     };
 
     return ( 

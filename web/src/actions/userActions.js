@@ -16,9 +16,11 @@ export const selectProduct = (product) => dispatch => {
     });
 };
 
-export const updateCart = (updatedCart) => dispatch => {
+export const updateCart = (updatedCart, user) => dispatch => {
     dispatch({
         type: UPDATE_CART,
         updatedCart
     })
+    
+        
 }

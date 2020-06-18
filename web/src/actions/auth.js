@@ -1,4 +1,5 @@
 import { myFirebase } from '../firebase/firebase';
+import { createFirestoreUser } from '../firebase/firebase'
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -120,9 +121,6 @@ export const loginUser = (email, password) => dispatch => {
     .then(user => {
       dispatch(receiveLogin(user));
     })
-    .then(() => {
-      window.location.reload(true)
-    })
     .catch(error => {
       dispatch(loginError());
     });
@@ -159,20 +157,18 @@ export const createUser = (email, password, displayName) => dispatch => {
     .auth()
     .createUserWithEmailAndPassword(email, password)
     .then(userDetails => {
-      return userDetails.user.updateProfile({
+      userDetails.user.updateProfile({
         displayName: displayName,
         photoURL: `${require('../assets/images/placeholderProfile.png')}`
       })
-    })
-    .then(user => {
-      dispatch(receiveCreateUser(user))
-    })
-    .then(() => {
-      window.location.reload(true)
+      dispatch(receiveCreateUser(userDetails.user))
+      createFirestoreUser(userDetails.user)
     })
     .catch(error => {
+      console.log('error', error);
       dispatch(createUserError());
     });
+
 };
 
 export const uploadUserProfileImage = (imageURL) => dispatch => {
