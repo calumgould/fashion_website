@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {Router, Route, Switch} from 'react-router-dom';
 import {createBrowserHistory} from 'history';
 import {connect} from "react-redux";
@@ -15,6 +15,9 @@ import SignUp from 'containers/SignUp';
 import Checkout from 'containers/Checkout';
 import Cart from 'containers/Cart';
 
+import {updateCart} from 'actions';
+import { getFirestoreUserCart } from './firebase/firebase';
+
 import 'styles/Main.css';
 import 'styles/index.css';
 
@@ -22,7 +25,16 @@ const history = createBrowserHistory();
 
 const App = (props) => {
 
-    const { isAuthenticated, isVerifying } = props;
+    const { isAuthenticated, isVerifying, dispatch, user } = props;
+
+    useEffect(() => {
+        if (user && isAuthenticated) {
+            getFirestoreUserCart(user)
+                .then(user => {
+                    dispatch(updateCart(user.data().cart))
+                })
+        }
+    }, [user, isAuthenticated, dispatch])
 
     return ( 
         <>
@@ -76,7 +88,8 @@ const App = (props) => {
 function mapStateToProps(state) {
   return {
     isAuthenticated: state.auth.isAuthenticated,
-    isVerifying: state.auth.isVerifying
+    isVerifying: state.auth.isVerifying,
+    user: state.auth.user
   };
 }
 

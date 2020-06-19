@@ -24,12 +24,17 @@ export const createFirestoreUser = (user) => {
     return db.collection('users').doc(`${user.uid}`)
         .set({
             created: firebase.firestore.FieldValue.serverTimestamp(),
+            cart: {}
         })
 }
 
-// export const updateCurrentUserFirestoreDetails = (user) => {
-//     return db.collection('users').doc(`${user.uid}`)
-//         .update({
-//             displayName: user.displayName
-//         })
-// }
+export const getFirestoreUserCart = (user) => {
+    return db.collection('users').doc(`${user.uid}`).get()
+}
+
+export const updateFirestoreUserCart = (user, cart) => {
+    return db.collection('users').doc(`${user.uid}`)
+        .update({
+            cart: cart
+        })
+}

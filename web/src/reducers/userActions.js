@@ -27,8 +27,8 @@ export default (
         case UPDATE_CART:
             return {
                 ...state,
-                cart: action.updatedCart,
-                cartCount: action.updatedCart.length
+                cart: action.cart,
+                cartCount: action.cart.length
             }
         default:
             return state;

@@ -7,7 +7,6 @@ import 'styles/Account.css';
 
 const Account = ({dispatch, user}) => {
 
-
   const [image, setImage] = useState(null);
   const [imageURL, setImageURL] = useState(null);
   const [uploadProgress, setUploadProgress] = useState(0);

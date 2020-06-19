@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from "react-redux";
 
 import {updateCart} from 'actions';
 import {products} from 'helpers/products';
+import { updateFirestoreUserCart } from '../firebase/firebase';
 
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 
@@ -19,15 +20,22 @@ const Products = ({dispatch, cart, user}) => {
                     ...product,
                     quantity: 1
                 })
-                dispatch(updateCart(cart, user))
+                dispatch(updateCart(cart))
+                updateFirestoreUserCart(user, cart)
             } else {
                 cart[index] = ({
                     ...product,
-                    quantity: product.quantity ++
+                    quantity: cart[index].quantity + 1
                 })
-                dispatch(updateCart(cart, user))
+                dispatch(updateCart(cart))
+                updateFirestoreUserCart(user, cart)
             }
+            
     }
+
+    useEffect(() => {
+        console.log('MOUNT CART', cart);    
+    }, [cart])
     
     const productNodes = products.map(product => { 
         return (
