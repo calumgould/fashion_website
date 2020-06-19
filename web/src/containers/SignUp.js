@@ -30,7 +30,7 @@ const SignUp = (props) => {
         dispatch(createUser(email, password, displayName))
         setTimeout(() => {
             props.history.push('/account')
-        }, 1000)
+        }, 1500)
     };
 
     return ( 

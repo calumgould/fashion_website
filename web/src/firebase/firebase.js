@@ -21,9 +21,15 @@ export const db = myFirebase.firestore();
 export const storage = firebase.storage();
 
 export const createFirestoreUser = (user) => {
-    return db.collection('users')
-        .add({
-            user_id: user.uid,
+    return db.collection('users').doc(`${user.uid}`)
+        .set({
             created: firebase.firestore.FieldValue.serverTimestamp(),
         })
 }
+
+// export const updateCurrentUserFirestoreDetails = (user) => {
+//     return db.collection('users').doc(`${user.uid}`)
+//         .update({
+//             displayName: user.displayName
+//         })
+// }

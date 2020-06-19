@@ -5,9 +5,8 @@ import { uploadUserProfileImage } from 'actions';
 
 import 'styles/Account.css';
 
-const Account = (props) => {
+const Account = ({dispatch, user}) => {
 
-  const { user } = props;
 
   const [image, setImage] = useState(null);
   const [imageURL, setImageURL] = useState(null);
@@ -53,7 +52,6 @@ const Account = (props) => {
             .child(image.name)
             .getDownloadURL()
             .then(url => {
-              const { dispatch } = props;
               dispatch(uploadUserProfileImage(url))
             });
         }
