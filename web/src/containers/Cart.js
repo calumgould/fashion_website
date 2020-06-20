@@ -1,16 +1,38 @@
 import React from 'react';
 import { connect } from "react-redux";
 
-const Cart = ({cart, history}) => {
+import ProductIncrement from 'components/ProductIncrement'
 
-    const generateCartItems = cart.map(cartItem => {
+import 'styles/Cart.css'
+
+const Cart = ({dispatch, user, cart, history}) => {
+
+    const totalPrice = cart.reduce((sum, item) => {
+        sum += item.price * item.quantity;
+        return parseFloat(sum.toFixed(2))
+    }, 0);
+
+    const generateCartItems = cart.map(product => {
+
+        const index = cart.findIndex((cartProduct) => cartProduct.product_id === product.product_id)
+        
         return (
-            <tr key={cartItem.product_id}>
-                <td className='table-image' style={{backgroundImage: `url(${cartItem.product_img})`}} />
-                <td>{cartItem.product_name}</td>
-                <td>{cartItem.product_desc}</td>
-                <td>{cartItem.quantity}</td>
-                <td>${cartItem.price}</td>
+            <tr key={product.product_id}>
+                <td className='table-image' style={{backgroundImage: `url(${product.product_img})`}} />
+                <td>{product.product_name}</td>
+                <td>{product.product_desc}</td>
+                <td>
+                    <td className='quantity-buttons'>
+                    <ProductIncrement 
+                            dispatch={dispatch}
+                            user={user}
+                            cart={cart}
+                            product={product}
+                            index={index}
+                        />
+                    </td>  
+                </td>
+                <td>${product.price}</td>
             </tr>
         )
     })
@@ -32,6 +54,7 @@ const Cart = ({cart, history}) => {
                     {generateCartItems}
                 </tbody>
             </table>
+            <h3>Total: $ {totalPrice}</h3>
             <div className='button-wrapper'>
                 <button onClick={() => history.push('/checkout')} className='button'>Checkout</button>
             </div>
@@ -48,7 +71,8 @@ const Cart = ({cart, history}) => {
  
 function mapStateToProps(state) {
     return {
-        cart: state.userActions.cart
+        cart: state.userActions.cart,
+        user: state.auth.user
     };
   }
   

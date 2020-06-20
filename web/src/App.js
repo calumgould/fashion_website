@@ -15,7 +15,7 @@ import SignUp from 'containers/SignUp';
 import Checkout from 'containers/Checkout';
 import Cart from 'containers/Cart';
 
-import {updateCart} from 'actions';
+import {getCart} from 'actions';
 import { getFirestoreUserCart } from './firebase/firebase';
 
 import 'styles/Main.css';
@@ -31,7 +31,7 @@ const App = (props) => {
         if (user && isAuthenticated) {
             getFirestoreUserCart(user)
                 .then(user => {
-                    dispatch(updateCart(user.data().cart))
+                    dispatch(getCart(user.data().cart))
                 })
         }
     }, [user, isAuthenticated, dispatch])

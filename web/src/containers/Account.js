@@ -96,10 +96,10 @@ const Account = ({dispatch, user}) => {
             {user.metadata.creationTime && <p>{formatDate(user.metadata.creationTime)}</p>}
             <h4>Last Login</h4>
             {user.metadata.lastSignInTime && <p>{formatDate(user.metadata.lastSignInTime)}</p>}
-            <button className='button'>Edit Details</button>
-
-          </div>
-
+            </div>
+            <div className='button-wrapper'>
+              <button className='button'>Edit Details</button>
+            </div>
         </div>
   
         <div className='profile-wrapper'>

@@ -23,8 +23,9 @@ export const storage = firebase.storage();
 export const createFirestoreUser = (user) => {
     return db.collection('users').doc(`${user.uid}`)
         .set({
+            user_uid: user.uid,
             created: firebase.firestore.FieldValue.serverTimestamp(),
-            cart: {}
+            cart: []
         })
 }
 
@@ -32,9 +33,61 @@ export const getFirestoreUserCart = (user) => {
     return db.collection('users').doc(`${user.uid}`).get()
 }
 
-export const updateFirestoreUserCart = (user, cart) => {
+export const addItemToFirestoreUserCart = (user, product) => {
+    console.log('updating cart...');
+    
     return db.collection('users').doc(`${user.uid}`)
         .update({
-            cart: cart
+            cart: firebase.firestore.FieldValue.arrayUnion(product)
         })
+}
+
+export const increaseQuantityFirestoreUserCart = (index, user, product, cart) => {
+
+    return db.collection('users').doc(`${user.uid}`)
+        .update({
+            cart: cart.filter(cartProduct => cartProduct.product_id !== product.product_id)
+        })
+        .then(() => {
+            db.collection('users').doc(`${user.uid}`)
+                .update({
+                    cart: firebase.firestore.FieldValue.arrayUnion({
+                        ...product,
+                        quantity: cart[index].quantity + 1
+                    })
+                })
+        })
+        .catch(error => {
+            console.log('firebase error', error);
+        })
+}
+
+export const decreaseQuantityFirestoreUserCart = (index, user, product, cart) => {
+
+    return db.collection('users').doc(`${user.uid}`)
+        .update({
+            cart: cart.filter(cartProduct => cartProduct.product_id !== product.product_id)
+        })
+        .then(() => {
+            db.collection('users').doc(`${user.uid}`)
+                .update({
+                    cart: firebase.firestore.FieldValue.arrayUnion({
+                        ...product,
+                        quantity: cart[index].quantity -1
+                    })
+                })
+        })
+        .catch(error => {
+            console.log('firebase error', error);
+        })
+}
+
+export const removeProductFromFirestoreUserCart = (index, user, product, cart) => {
+    return db.collection('users').doc(`${user.uid}`)
+    .update({
+        cart: cart.filter(cartProduct => cartProduct.product_id !== product.product_id)
+    })
+    .catch(error => {
+        console.log('firebase error', error);
+    })
 }

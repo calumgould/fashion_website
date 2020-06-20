@@ -8,7 +8,7 @@ export const products = [
       product_img:
         'https://images.unsplash.com/photo-1572804013427-4d7ca7268217?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2905&q=80',
       price: 39.99,
-      quantity: 0,
+      quantity: 1,
     },
     {
       product_id: 2,
@@ -19,6 +19,6 @@ export const products = [
       product_img:
         'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80',
       price: 19.99,
-      quantity: 0,
+      quantity: 1,
     }
   ]
