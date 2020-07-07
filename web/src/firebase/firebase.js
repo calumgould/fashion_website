@@ -91,3 +91,14 @@ export const removeProductFromFirestoreUserCart = (index, user, product, cart) =
         console.log('firebase error', error);
     })
 }
+
+export const getProductCategories = () => {
+    return db.collection('admin').doc('categories').get()
+}
+
+export const addProductCategory = (category) => {
+    return db.collection('admin').doc('categories')
+    .update({
+        categories: firebase.firestore.FieldValue.arrayUnion(category)
+    })
+}

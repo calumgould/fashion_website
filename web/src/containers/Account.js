@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+
 import { storage } from '../firebase/firebase';
 import { uploadUserProfileImage } from 'actions';
+import { logoutUser } from "../actions";
+
 
 import 'styles/Account.css';
 
-const Account = ({dispatch, user}) => {
+const Account = ({history, dispatch, isAuthenticated, user}) => {
 
   const [image, setImage] = useState(null);
   const [imageURL, setImageURL] = useState(null);
@@ -60,6 +63,14 @@ const Account = ({dispatch, user}) => {
     }
   }
 
+  const toggleLoginLink = () => {
+    if(isAuthenticated) {
+        return <button onClick={() => dispatch(logoutUser())} className='button'>Logout</button>
+    } else {
+        return <button onClick={() => history.push('/login')}>Login</button>
+    }
+}
+
   const formatDate = (date) => {
     return date.split(' ').slice(0, 4).join(' ');
   }
@@ -79,10 +90,15 @@ const Account = ({dispatch, user}) => {
     </div>
   )
 
+  
+
  
   return (
     <div>
-      <h2>Account</h2>
+      <div className='account-header'>
+        <h2>Account</h2>
+        {toggleLoginLink()}
+      </div>
       <div className='account-page'>
         <div className='details-wrapper'>
         
@@ -120,7 +136,8 @@ const Account = ({dispatch, user}) => {
 
 function mapStateToProps(state) {
   return {
-    user: state.auth.user,
+    isAuthenticated: state.auth.isAuthenticated,
+    user: state.auth.user
   };
 }
 

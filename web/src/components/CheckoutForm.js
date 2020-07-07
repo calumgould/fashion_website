@@ -17,7 +17,6 @@ const CheckoutForm = ({cart}) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-
         const { data: { client_secret } } = await axios.post('http://localhost:3000/secret', cart);
         
         const result = await stripe.confirmCardPayment(client_secret, {

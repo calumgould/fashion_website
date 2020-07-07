@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import { connect } from "react-redux";
 import Switch from 'react-switch';
 
-import { logoutUser } from "../actions";
 import { toggleDarkMode } from '../actions';
 
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
@@ -11,11 +10,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 import 'styles/NavBar.css';
 
-const NavBar = ({dispatch, darkMode, isAuthenticated, cart, cartCount}) => {
-
-    const handleLogout = () => {
-        dispatch(logoutUser());
-    };
+const NavBar = ({dispatch, darkMode, cart}) => {
 
     useEffect(() => {
         if(darkMode) {
@@ -44,31 +39,7 @@ const NavBar = ({dispatch, darkMode, isAuthenticated, cart, cartCount}) => {
         console.log('handleModeChange: ', darkMode);
     }
     
-    const toggleLoginLink = () => {
-        if(isAuthenticated) {
-            return (
-                <li>
-                    <NavLink 
-                    className='link'
-                    to="/"
-                    onClick={handleLogout}>
-                    Logout
-                    </NavLink>
-                </li>
-            )
-        } else {
-            return (
-                <li>
-                    <NavLink 
-                    className='link'
-                    activeClassName='link-active'
-                    to="/login">
-                    Login
-                    </NavLink>
-                </li>
-            )
-        }
-    }
+
 
     return ( 
         <div>
@@ -121,8 +92,23 @@ const NavBar = ({dispatch, darkMode, isAuthenticated, cart, cartCount}) => {
                     to="/about">
                     <span>About</span>
                     </NavLink>
-                </li>   
-                {toggleLoginLink()}
+                </li>
+                <li>
+                    <NavLink 
+                    className='link'
+                    activeClassName='link-active'
+                    to="/contact">
+                    <span>Contact</span>
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink 
+                    className='link'
+                    activeClassName='link-active'
+                    to="/admin">
+                    <span>Admin</span>
+                    </NavLink>
+                </li>
                 <li>
                     <NavLink 
                     className='cart'

@@ -14,8 +14,13 @@ import Login from 'containers/Login';
 import SignUp from 'containers/SignUp';
 import Checkout from 'containers/Checkout';
 import Cart from 'containers/Cart';
+import Contact from 'containers/Contact';
+import Admin from 'containers/Admin';
 
-import {getCart} from 'actions';
+import { getCart } from 'actions';
+import { getCategories } from 'actions';
+
+import { getProductCategories } from './firebase/firebase';
 import { getFirestoreUserCart } from './firebase/firebase';
 
 import 'styles/Main.css';
@@ -34,7 +39,14 @@ const App = (props) => {
                     dispatch(getCart(user.data().cart))
                 })
         }
-    }, [user, isAuthenticated, dispatch])
+    }, [isAuthenticated, user, dispatch])
+
+    useEffect(() => {
+        getProductCategories()
+            .then(categories => {
+                dispatch(getCategories(categories.data().categories))
+            })
+    }, [dispatch])
 
     return ( 
         <>
@@ -58,6 +70,10 @@ const App = (props) => {
                     component={About}
                     />
                     <Route 
+                    path='/contact'
+                    component={Contact}
+                    />
+                    <Route 
                     path='/login'
                     component={Login}
                     />
@@ -72,6 +88,10 @@ const App = (props) => {
                     <Route 
                     path='/checkout'
                     component={Checkout}
+                    />
+                    <Route 
+                    path='/admin'
+                    component={Admin}
                     />
                     <ProtectedRoute 
                     path='/account'

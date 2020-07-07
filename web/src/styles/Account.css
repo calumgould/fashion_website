@@ -6,6 +6,22 @@
     margin: 0 auto;
 }
 
+.account-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.account-header > h2 {
+    width: 100%;
+}
+
+.account-header > button {
+    position: absolute;
+    right: 0;
+    margin-right: 10%;
+}
+
 .details-wrapper {
     display: flex;
     flex-wrap: wrap;
