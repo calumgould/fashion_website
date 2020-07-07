@@ -1,11 +1,14 @@
 import {
     GET_CATEGORIES,
     ADD_CATEGORY,
+    GET_PRODUCTS,
+    ADD_PRODUCT
 } from '../actions/';
 
 export default (
     state = {
-        categories: []
+        categories: [],
+        products: []
     },
     action
 ) => {
@@ -13,12 +16,22 @@ export default (
         case GET_CATEGORIES:
             return {
                 ...state,
-                categories: action.categories
+                categories: action.categories.data().categories
             };
         case ADD_CATEGORY:
             return {
                 ...state,
                 categories: [...state.categories, action.category],
+            }
+        case GET_PRODUCTS:
+            return {
+                ...state,
+                products: action.products.data().products,
+            }
+        case ADD_PRODUCT:
+            return {
+                ...state,
+                products: [...state.products, action.product],
             }
         default:
             return state;

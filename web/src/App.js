@@ -17,11 +17,11 @@ import Cart from 'containers/Cart';
 import Contact from 'containers/Contact';
 import Admin from 'containers/Admin';
 
-import { getCart } from 'actions';
-import { getCategories } from 'actions';
-
-import { getProductCategories } from './firebase/firebase';
-import { getFirestoreUserCart } from './firebase/firebase';
+import { 
+    getCart, 
+    getCategories,
+    getProducts
+} from 'actions';
 
 import 'styles/Main.css';
 import 'styles/index.css';
@@ -30,23 +30,19 @@ const history = createBrowserHistory();
 
 const App = (props) => {
 
-    const { isAuthenticated, isVerifying, dispatch, user } = props;
+    const { isAuthenticated, isVerifying, dispatch, user, cart } = props;
 
     useEffect(() => {
-        if (user && isAuthenticated) {
-            getFirestoreUserCart(user)
-                .then(user => {
-                    dispatch(getCart(user.data().cart))
-                })
-        }
-    }, [isAuthenticated, user, dispatch])
-
-    useEffect(() => {
-        getProductCategories()
-            .then(categories => {
-                dispatch(getCategories(categories.data().categories))
-            })
+        dispatch(getCategories())
+        dispatch(getProducts())
     }, [dispatch])
+
+    useEffect(() => {
+        if (user.uid && cart.length < 1) {
+            console.log('USEEFFECT', user.uid);
+            dispatch(getCart(user)) 
+        }
+    }, [user])
 
     return ( 
         <>
@@ -109,7 +105,9 @@ function mapStateToProps(state) {
   return {
     isAuthenticated: state.auth.isAuthenticated,
     isVerifying: state.auth.isVerifying,
-    user: state.auth.user
+    user: state.auth.user,
+    cart: state.userActions.cart,
+    isCreated: state.auth.isCreated,
   };
 }
 

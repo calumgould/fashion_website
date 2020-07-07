@@ -31,8 +31,8 @@ export default (
         case GET_CART:
             return {
                 ...state,
-                cart: action.cart,
-                cartCount: action.cart.length
+                cart: action.userCart,
+                cartCount: action.userCart.length
             }
         case ADD_TO_CART:
             return {

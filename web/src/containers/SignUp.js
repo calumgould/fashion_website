@@ -7,7 +7,7 @@ import { createUser } from "../actions";
 import 'styles/Form.css';
 import 'styles/Login.css';
 
-const SignUp = (props) => {
+const SignUp = ({dispatch, history}) => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -26,11 +26,8 @@ const SignUp = (props) => {
     }
   
     const handleSubmit = () => {
-        const { dispatch } = props;
-        dispatch(createUser(email, password, displayName))
-        setTimeout(() => {
-            props.history.push('/account')
-        }, 1500)
+        dispatch(createUser(email, password, displayName, history))
+        history.push('/account')
     };
 
     return ( 
@@ -57,8 +54,6 @@ const SignUp = (props) => {
  
 function mapStateToProps(state) {
     return {
-      isCreating: state.auth.isCreating,
-      createError: state.auth.createError,
       isCreated: state.auth.isCreated
     };
   }

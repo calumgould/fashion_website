@@ -21,6 +21,7 @@ export const db = myFirebase.firestore();
 export const storage = firebase.storage();
 
 export const createFirestoreUser = (user) => {
+    console.log('create firestore user', user);
     return db.collection('users').doc(`${user.uid}`)
         .set({
             user_uid: user.uid,
@@ -100,5 +101,16 @@ export const addProductCategory = (category) => {
     return db.collection('admin').doc('categories')
     .update({
         categories: firebase.firestore.FieldValue.arrayUnion(category)
+    })
+}
+
+export const getProductList = () => {
+    return db.collection('admin').doc('products').get()
+}
+
+export const addNewProduct = (product) => {
+    return db.collection('admin').doc('products')
+    .update({
+        products: firebase.firestore.FieldValue.arrayUnion(product)
     })
 }

@@ -1,17 +1,23 @@
 import { 
     getProductCategories,
-    addProductCategory
+    addProductCategory,
+    getProductList,
+    addNewProduct
 } from '../firebase/firebase';
 
 export const GET_CATEGORIES = 'GET_CATEGORIES';
 export const ADD_CATEGORY = 'ADD_CATEGORY';
+export const GET_PRODUCTS = 'GET_PRODUCTS';
+export const ADD_PRODUCT = 'ADD_PRODUCT';
 
-export const getCategories = (categories) => dispatch => {
+export const getCategories = () => dispatch => {
     getProductCategories()
-    dispatch({
-        type: GET_CATEGORIES,
-        categories
-    })
+        .then(categories => {
+            dispatch({
+                type: GET_CATEGORIES,
+                categories
+            })
+        })
 }
 
 export const addCategory = (category) => dispatch => {
@@ -19,6 +25,26 @@ export const addCategory = (category) => dispatch => {
     dispatch({
         type: ADD_CATEGORY,
         category
+    })
+}
+
+export const getProducts = () => dispatch => {
+    getProductList()
+        .then(products => {
+            console.log('PRODUCTS', products.data().products);
+            
+            dispatch({
+                type: GET_PRODUCTS,
+                products
+            })
+        })
+}
+
+export const addProduct = (product) => dispatch => {
+    addNewProduct(product)
+    dispatch({
+        type: ADD_PRODUCT,
+        product
     })
 }
 

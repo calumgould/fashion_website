@@ -1,5 +1,6 @@
 import { myFirebase } from '../firebase/firebase';
-import { createFirestoreUser } from '../firebase/firebase'
+import { createFirestoreUser } from '../firebase/firebase';
+import { getCart } from 'actions';
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -19,8 +20,6 @@ export const CREATE_FAILURE = 'CREATE_FAILURE';
 export const PROFILE_IMAGE_REQUEST = 'PROFILE_IMAGE_REQUEST';
 export const PROFILE_IMAGE_SUCCESS = 'PROFILE_IMAGE_SUCCESS';
 export const PROFILE_IMAGE_FAILURE = 'PROFILE_IMAGE_FAILURE';
-
-
 
 const requestLogin = () => {
   return {
@@ -118,8 +117,8 @@ export const loginUser = (email, password) => dispatch => {
   myFirebase
     .auth()
     .signInWithEmailAndPassword(email, password)
-    .then(user => {
-      dispatch(receiveLogin(user));
+    .then(details => {
+      dispatch(receiveLogin(details.user))
     })
     .catch(error => {
       dispatch(loginError());
@@ -151,7 +150,7 @@ export const verifyAuth = () => dispatch => {
     });
 };
 
-export const createUser = (email, password, displayName) => dispatch => {
+export const createUser = (email, password, displayName, history) => dispatch => {
   dispatch(requestCreateUser())
   myFirebase
     .auth()
@@ -161,8 +160,16 @@ export const createUser = (email, password, displayName) => dispatch => {
         displayName: displayName,
         photoURL: `${require('../assets/images/placeholderProfile.png')}`
       })
-      dispatch(receiveCreateUser(userDetails.user))
-      createFirestoreUser(userDetails.user)
+        .then(() => {
+          console.log('user details', userDetails.user);
+          createFirestoreUser(userDetails.user)
+        })
+        .then(() => {
+          dispatch(receiveCreateUser(userDetails.user))
+        })
+        .then(() => {
+          history.push('/account')
+        })
     })
     .catch(error => {
       console.log('error', error);
@@ -186,4 +193,3 @@ export const uploadUserProfileImage = (imageURL) => dispatch => {
       }
     })
 };
-

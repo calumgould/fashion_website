@@ -89,9 +89,6 @@ const Account = ({history, dispatch, isAuthenticated, user}) => {
       </div>
     </div>
   )
-
-  
-
  
   return (
     <div>

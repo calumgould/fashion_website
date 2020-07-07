@@ -38,13 +38,14 @@ export default (
             return {
                 ...state,
                 isLoggingIn: true,
-                loginError: false
+                loginError: false,
             };
         case LOGIN_SUCCESS:
             return {
                 ...state,
                 isLoggingIn: false,
                 isAuthenticated: true,
+                isCreated: true,
                 user: action.user,
             };
         case LOGIN_FAILURE:
@@ -65,6 +66,7 @@ export default (
                 ...state,
                 isLoggingOut: false,
                 isAuthenticated: false,
+                isCreated: false,
                 user: {},
             };
         case LOGOUT_FAILURE:

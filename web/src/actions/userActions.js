@@ -1,4 +1,5 @@
 import { 
+    getFirestoreUserCart,
     addItemToFirestoreUserCart, 
     increaseQuantityFirestoreUserCart, 
     decreaseQuantityFirestoreUserCart ,
@@ -27,10 +28,25 @@ export const selectProduct = (product) => dispatch => {
     });
 };
 
-export const getCart = (cart) => dispatch => {
-    dispatch({
-        type: GET_CART,
-        cart
+export const getCart = (user) => dispatch => {
+    console.log('getCART FUNCTION', user);
+
+    getFirestoreUserCart(user)
+    .then(cart => {
+        if (cart.data()) {
+            let userCart = cart.data().cart
+            dispatch({
+                type: GET_CART,
+                userCart
+            })
+        } else {
+            let userCart = []
+            dispatch({
+                type: GET_CART,
+                userCart
+            })
+        }
+        
     })
 }
 
