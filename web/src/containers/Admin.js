@@ -4,15 +4,19 @@ import {connect} from "react-redux";
 import AdminAddProduct from 'components/AdminAddProduct';
 import AdminAddCategory from 'components/AdminAddCategory';
 
+import 'styles/Admin.css';
 
 const AdminPage = ({dispatch, categories, products}) => {
 
     const currentProducts = products.map((product) => {
         return (
-          <div key={product.id}>
-            <img src={product.image} alt={product.name}></img>
-            <h4>{product.name}</h4>
-          </div>
+          <tr key={product.id}>
+                <td className='table-image' style={{backgroundImage: `url(${product.image})`}} />
+                <td>{product.name}</td>
+                <td>{product.description}</td>
+                <td>{product.category}</td>
+                <td>${product.price}</td>
+            </tr>
         )
     })
 
@@ -22,7 +26,20 @@ const AdminPage = ({dispatch, categories, products}) => {
             <AdminAddProduct dispatch={dispatch} categories={categories} products={products} />
             <AdminAddCategory dispatch={dispatch} />
             <h2>Current Products</h2>
-            {currentProducts}
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {currentProducts}
+                </tbody>
+            </table>
         </div>
      );
 }

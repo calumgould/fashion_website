@@ -1,0 +1,107 @@
+.add-form {
+    text-align: center;
+}
+
+.add-form-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50vh;
+    margin: 3em auto;
+}
+
+.add-category-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 3em auto;
+}
+
+.input-wrapper, .upload-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    height: 100%;
+    margin: 0 1em;
+}
+
+.input-wrapper > input, .input-wrapper > select, .input-wrapper > textarea {
+    width: 100%;
+    margin: 0.5em;
+    border-radius: 1.5em;
+    padding: 1.5em 1em;
+    border: none;
+    font-family: var(--body-text);
+    font-size: 1em;
+}
+
+.input-wrapper > input:focus, .input-wrapper > select:focus, .input-wrapper > textarea:focus {
+    outline: none;
+}
+
+.input-wrapper > input:hover, .input-wrapper > select:hover, .input-wrapper > textarea:hover {
+    background-color: whitesmoke;
+}
+
+.input-wrapper > input {
+    cursor: text;
+}
+
+.input-wrapper > textarea {
+    height: 40%;
+}
+
+.input-wrapper > select {
+    appearance: none;
+    cursor: pointer;
+}
+
+.input-wrapper > textarea {
+    resize: none;
+}
+
+.upload-wrapper > h4 {
+    width: 100%;
+}
+
+.product-image-wrapper {
+    height: 60%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-image-wrapper > img {
+    height: 100%;
+    color: transparent;
+}
+
+.upload-file {
+    width: 100%;
+    background-color: var(--primary);
+    padding: 6px 12px;
+    cursor: pointer;
+    font-family: var(--body-text);
+    color: var(--secondary-inverted);
+    padding: 0.5em 1em;
+    border-radius: 4em;
+    margin: 4em;
+    text-align: center;
+}
+
+.upload-file:hover {
+    opacity: 0.9;
+}
+
+.submit-wrapper {
+    text-align: center;
+    padding: 1em 0 4em 0;
+    border-bottom: 3px solid var(--primary);
+}

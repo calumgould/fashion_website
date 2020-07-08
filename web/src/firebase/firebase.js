@@ -113,4 +113,7 @@ export const addNewProduct = (product) => {
     .update({
         products: firebase.firestore.FieldValue.arrayUnion(product)
     })
+    .then(() => {
+        alert(`${product.name} has been added!`)
+    })
 }

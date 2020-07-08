@@ -90,7 +90,7 @@ input[type="file"] {
     padding: 6px 12px;
     cursor: pointer;
     font-family: var(--body-text);
-    color: var(--secondary);
+    color: var(--secondary-inverted);
     padding: 0.5em 1em;
     border-radius: 4em;
     margin: 4em;

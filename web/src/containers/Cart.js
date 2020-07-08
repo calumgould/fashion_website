@@ -17,10 +17,10 @@ const Cart = ({dispatch, user, cart, history}) => {
         const index = cart.findIndex((cartProduct) => cartProduct.product_id === product.product_id)
         
         return (
-            <tr key={product.product_id}>
-                <td className='table-image' style={{backgroundImage: `url(${product.product_img})`}} />
-                <td>{product.product_name}</td>
-                <td>{product.product_desc}</td>
+            <tr key={product.id}>
+                <td className='table-image' style={{backgroundImage: `url(${product.image})`}} />
+                <td>{product.name}</td>
+                <td>{product.description}</td>
                 <td>
                     <td className='quantity-buttons'>
                     <ProductIncrement 

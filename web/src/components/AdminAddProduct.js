@@ -7,8 +7,6 @@ const AdminAddProduct = ({ dispatch, categories, products }) => {
 
     const [image, setImage] = useState(null);
     const [imageURL, setImageURL] = useState(null);
-    const [uploadProgress, setUploadProgress] = useState(0);
-    const [showProgress, setShowProgress] = useState(false);
 
     useEffect(() => {
         console.log('products length', products.length + 1);
@@ -17,7 +15,6 @@ const AdminAddProduct = ({ dispatch, categories, products }) => {
     const handleImageUpload = (event) => {
         if (image !== null) {
             return new Promise((resolve, reject) => {
-                setShowProgress(true)
                 const uploadTask = storage.ref(`admin/products/${products.length + 1}/${image.name}`).put(image)
                 uploadTask.then(() => {
                     storage
@@ -57,7 +54,7 @@ const AdminAddProduct = ({ dispatch, categories, products }) => {
                 description: event.target.productDescription.value,
                 category: event.target.productCategory.value,
                 image: downloadURL,
-                price: event.target.productPrice.value,
+                price: parseFloat(event.target.productPrice.value).toFixed(2),
                 quantity: 1
             }
             console.log('PRODUCT TO ADD', product);
@@ -65,7 +62,7 @@ const AdminAddProduct = ({ dispatch, categories, products }) => {
         } catch (error) {
             console.log('ERROR', error);
         }
-
+        document.getElementById('add-product-form').reset()
     }
 
     const categoryOptions = categories.map((category, index) => {
@@ -75,30 +72,32 @@ const AdminAddProduct = ({ dispatch, categories, products }) => {
     return (
         <div>
             <h3>Add Product</h3>
-            <form onSubmit={handleAddProduct}>
-                <input type='text' name='productName' placeholder='Product name...' required />
-                <input type='text' name='productDescription' placeholder='Product description' required />
-                <select name='productCategory' placeholder='Category...' required >
-                    {categoryOptions}
-                </select>
-                <input type='number' name='productPrice' placeholder='Price...' required />
-
-                <div className='image-wrapper'>
-                    <h3>Profile Image</h3>
-                    <img className='profile-image' src={imageURL} alt='uploaded' />
-                </div>
-
-                <div className='edit-wrapper'>
-                    {showProgress ? <progress value={uploadProgress} max='100' /> : null}
-                    <div>
-                        <label className='upload-button'>
-                            <input id='upload' type='file' name='product-image' onChange={handleDisplayImage} />
-                        Choose File
+            <form id='add-product-form' onSubmit={handleAddProduct}>
+                <div className='add-form-wrapper'>
+                    <div className='input-wrapper'>
+                        <input type='text' name='productName' placeholder='Product name...' required />
+                        <textarea type='text' name='productDescription' placeholder='Product description...' required />
+                        <select name='productCategory' defaultValue='' required >
+                            <option value='' disabled>Select product category</option>
+                            {categoryOptions}
+                        </select>
+                        <input type='number' step='0.01' name='productPrice' placeholder='Price...' required />
+                    </div>
+    
+                    <div className='upload-wrapper'>
+                        <h4>Upload Product Image</h4>
+                        <div className='product-image-wrapper'>
+                            <img src={imageURL} alt='uploaded' />
+                        </div>
+                        <label className='upload-file'>
+                            <input id='upload' type='file' name='product-image' onChange={handleDisplayImage} accept='image/*'/>
+                            Choose File
                         </label>
                     </div>
                 </div>
-
-                <button type='submit'>Add</button>
+                <div className='submit-wrapper'>
+                    <button type='submit' className='button'>Confirm Add Product</button>
+                </div>
             </form>
         </div>
     );

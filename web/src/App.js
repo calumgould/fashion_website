@@ -42,7 +42,7 @@ const App = (props) => {
             console.log('USEEFFECT', user.uid);
             dispatch(getCart(user)) 
         }
-    }, [user])
+    }, [user, cart.length, dispatch])
 
     return ( 
         <>
