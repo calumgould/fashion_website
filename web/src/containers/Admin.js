@@ -4,9 +4,16 @@ import {connect} from "react-redux";
 import AdminAddProduct from 'components/AdminAddProduct';
 import AdminAddCategory from 'components/AdminAddCategory';
 
+import { removeProduct } from "../actions";
+
 import 'styles/Admin.css';
 
 const AdminPage = ({dispatch, categories, products}) => {
+
+    const handleRemoveProduct = (product) => {
+        const index = products.findIndex((productItem) => productItem.id === product.id)
+        dispatch(removeProduct(product, products, index))
+    }
 
     const currentProducts = products.map((product) => {
         return (
@@ -16,6 +23,9 @@ const AdminPage = ({dispatch, categories, products}) => {
                 <td>{product.description}</td>
                 <td>{product.category}</td>
                 <td>${product.price}</td>
+                <td>
+                    <button className='remove-button' onClick={() => handleRemoveProduct(product)}>Remove</button>
+                </td>
             </tr>
         )
     })
@@ -34,6 +44,7 @@ const AdminPage = ({dispatch, categories, products}) => {
                         <th>Description</th>
                         <th>Category</th>
                         <th>Price</th>
+                        <th>Edit</th>
                     </tr>
                 </thead>
                 <tbody>

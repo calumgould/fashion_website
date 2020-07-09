@@ -14,7 +14,7 @@ const Cart = ({dispatch, user, cart, history}) => {
 
     const generateCartItems = cart.map(product => {
 
-        const index = cart.findIndex((cartProduct) => cartProduct.product_id === product.product_id)
+        const index = cart.findIndex((cartProduct) => cartProduct.id === product.id)
         
         return (
             <tr key={product.id}>
@@ -22,15 +22,15 @@ const Cart = ({dispatch, user, cart, history}) => {
                 <td>{product.name}</td>
                 <td>{product.description}</td>
                 <td>
-                    <td className='quantity-buttons'>
-                    <ProductIncrement 
+                    <div className='quantity-buttons'>
+                    <ProductIncrement
                             dispatch={dispatch}
                             user={user}
                             cart={cart}
                             product={product}
                             index={index}
                         />
-                    </td>  
+                    </div>  
                 </td>
                 <td>${product.price}</td>
             </tr>
@@ -76,4 +76,4 @@ function mapStateToProps(state) {
     };
   }
   
-  export default (connect(mapStateToProps)(Cart));
+export default (connect(mapStateToProps)(Cart));

@@ -2,13 +2,15 @@ import {
     getProductCategories,
     addProductCategory,
     getProductList,
-    addNewProduct
+    addNewProduct,
+    removeExistingProduct
 } from '../firebase/firebase';
 
 export const GET_CATEGORIES = 'GET_CATEGORIES';
 export const ADD_CATEGORY = 'ADD_CATEGORY';
 export const GET_PRODUCTS = 'GET_PRODUCTS';
 export const ADD_PRODUCT = 'ADD_PRODUCT';
+export const REMOVE_PRODUCT = 'REMOVE_PRODUCT';
 
 export const getCategories = () => dispatch => {
     getProductCategories()
@@ -45,6 +47,14 @@ export const addProduct = (product) => dispatch => {
     dispatch({
         type: ADD_PRODUCT,
         product
+    })
+}
+
+export const removeProduct = (product, products, index) => dispatch => {
+    removeExistingProduct(product, products)
+    dispatch({
+        type: REMOVE_PRODUCT,
+        index
     })
 }
 

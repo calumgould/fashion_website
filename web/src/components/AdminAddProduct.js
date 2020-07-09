@@ -63,6 +63,7 @@ const AdminAddProduct = ({ dispatch, categories, products }) => {
             console.log('ERROR', error);
         }
         document.getElementById('add-product-form').reset()
+        setImage(null)
     }
 
     const categoryOptions = categories.map((category, index) => {

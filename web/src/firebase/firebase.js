@@ -47,7 +47,7 @@ export const increaseQuantityFirestoreUserCart = (index, user, product, cart) =>
 
     return db.collection('users').doc(`${user.uid}`)
         .update({
-            cart: cart.filter(cartProduct => cartProduct.product_id !== product.product_id)
+            cart: cart.filter(cartProduct => cartProduct.id !== product.id)
         })
         .then(() => {
             db.collection('users').doc(`${user.uid}`)
@@ -67,7 +67,7 @@ export const decreaseQuantityFirestoreUserCart = (index, user, product, cart) =>
 
     return db.collection('users').doc(`${user.uid}`)
         .update({
-            cart: cart.filter(cartProduct => cartProduct.product_id !== product.product_id)
+            cart: cart.filter(cartProduct => cartProduct.id !== product.id)
         })
         .then(() => {
             db.collection('users').doc(`${user.uid}`)
@@ -86,7 +86,7 @@ export const decreaseQuantityFirestoreUserCart = (index, user, product, cart) =>
 export const removeProductFromFirestoreUserCart = (index, user, product, cart) => {
     return db.collection('users').doc(`${user.uid}`)
     .update({
-        cart: cart.filter(cartProduct => cartProduct.product_id !== product.product_id)
+        cart: cart.filter(cartProduct => cartProduct.id !== product.id)
     })
     .catch(error => {
         console.log('firebase error', error);
@@ -117,3 +117,14 @@ export const addNewProduct = (product) => {
         alert(`${product.name} has been added!`)
     })
 }
+
+export const removeExistingProduct = (product, products) => {
+    return db.collection('admin').doc('products')
+    .update({
+        products: products.filter(productItem => productItem.id !== product.id)
+    })
+    .then(() => {
+        alert(`${product.name} has been removed!`)
+    })
+}
+

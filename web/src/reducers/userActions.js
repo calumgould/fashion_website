@@ -5,7 +5,8 @@ import {
     ADD_TO_CART,
     INCREASE_QUANTITY,
     DECREASE_QUANTITY,
-    REMOVE_FROM_CART
+    REMOVE_FROM_CART,
+    LOGOUT_SUCCESS,
 } from '../actions/'
 
 export default (
@@ -71,6 +72,12 @@ export default (
                     ...state.cart.slice(0, action.index),
                     ...state.cart.slice(action.index + 1)
                 ]
+            }
+        case LOGOUT_SUCCESS:
+            return {
+                ...state,
+                cart: [],
+                cartCount: 0
             }
         default:
             return state;

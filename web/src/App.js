@@ -14,7 +14,6 @@ import Login from 'containers/Login';
 import SignUp from 'containers/SignUp';
 import Checkout from 'containers/Checkout';
 import Cart from 'containers/Cart';
-import Contact from 'containers/Contact';
 import Admin from 'containers/Admin';
 
 import { 
@@ -64,10 +63,6 @@ const App = (props) => {
                     <Route 
                     path='/about'
                     component={About}
-                    />
-                    <Route 
-                    path='/contact'
-                    component={Contact}
                     />
                     <Route 
                     path='/login'

@@ -32,22 +32,21 @@ const CheckoutForm = ({cart}) => {
 
     }
 
-    const calculateTotalCartPrice = () => {
-        const totalPrice = cart.reduce((prevItem, curItem) => {
-            return prevItem + curItem.price;
-        }, 0);
-        console.log('total price', totalPrice);
-        
-        return Math.round(totalPrice * 100) / 100;
-    }
+    const totalPrice = cart.reduce((sum, item) => {
+        sum += item.price * item.quantity;
+        return parseFloat(sum.toFixed(2))
+    }, 0);
 
     return (
-        <form style={{maxWidth: '400px', margin: '0 auto'}} onSubmit={handleSubmit}>
-            <h3>Price: ${calculateTotalCartPrice()}</h3>
+        <form className='checkout-form' onSubmit={handleSubmit}>
+            <h3>Price: ${totalPrice}</h3>
             <CardElement />
-            <button type='submit' disabled={!stripe}>
-                Pay
-            </button>
+            <p>(This is not a real shop. Payment functionality disabled)</p>
+            <div className='button-wrapper'>
+                <button type='submit' className='button' disabled={!stripe}>
+                    Pay
+                </button>
+            </div>
         </form>
     )
 

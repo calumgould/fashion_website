@@ -97,14 +97,6 @@ const NavBar = ({dispatch, darkMode, cart}) => {
                     <NavLink 
                     className='link'
                     activeClassName='link-active'
-                    to="/contact">
-                    <span>Contact</span>
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink 
-                    className='link'
-                    activeClassName='link-active'
                     to="/admin">
                     <span>Admin</span>
                     </NavLink>

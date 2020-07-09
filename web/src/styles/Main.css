@@ -56,9 +56,6 @@ p, h4, h5 {
     border: none;
     cursor: pointer;
     outline: none;
-}
-
-.button {
     background-color: var(--primary);
     color: var(--button-text);
 }

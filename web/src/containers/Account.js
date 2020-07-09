@@ -89,12 +89,12 @@ const Account = ({history, dispatch, isAuthenticated, user}) => {
       </div>
     </div>
   )
+
  
   return (
     <div>
       <div className='account-header'>
         <h2>Account</h2>
-        {toggleLoginLink()}
       </div>
       <div className='account-page'>
         <div className='details-wrapper'>
@@ -111,7 +111,7 @@ const Account = ({history, dispatch, isAuthenticated, user}) => {
             {user.metadata.lastSignInTime && <p>{formatDate(user.metadata.lastSignInTime)}</p>}
             </div>
             <div className='button-wrapper'>
-              <button className='button'>Edit Details</button>
+              <button className='button' onClick={() => dispatch(logoutUser())}>Logout</button>
             </div>
         </div>
   
