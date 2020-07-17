@@ -13,7 +13,12 @@ const Products = ({dispatch, cart, user, products}) => {
 
         return (
         <div className='product' key={product.id}>
-            <div className='product-image' style={{backgroundImage: `url(${product.image})`}} />
+            <div className='product-wrapper'>
+                <div className='product-image' style={{backgroundImage: `url(${product.image})`}} />
+            </div>
+            <div className='product-description'>
+                <p>{product.description}</p>
+            </div>
             <div className='product-text'>
                 <h4>{product.name}</h4>
                 <div className='product-info-wrapper'>

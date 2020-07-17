@@ -8,7 +8,7 @@ import { logoutUser } from "../actions";
 
 import 'styles/Account.css';
 
-const Account = ({history, dispatch, isAuthenticated, user}) => {
+const Account = ({ dispatch, user }) => {
 
   const [image, setImage] = useState(null);
   const [imageURL, setImageURL] = useState(null);
@@ -17,11 +17,11 @@ const Account = ({history, dispatch, isAuthenticated, user}) => {
   const [showEdit, setShowEdit] = useState(false);
 
   useEffect(() => {
-    if(uploadProgress === 100){
+    if (uploadProgress === 100) {
       setShowEdit(false);
       setUploadProgress(0);
     }
-  },[uploadProgress])
+  }, [uploadProgress])
 
   const handleDisplayImage = (event) => {
     let reader = new FileReader();
@@ -63,14 +63,6 @@ const Account = ({history, dispatch, isAuthenticated, user}) => {
     }
   }
 
-  const toggleLoginLink = () => {
-    if(isAuthenticated) {
-        return <button onClick={() => dispatch(logoutUser())} className='button'>Logout</button>
-    } else {
-        return <button onClick={() => history.push('/login')}>Login</button>
-    }
-}
-
   const formatDate = (date) => {
     return date.split(' ').slice(0, 4).join(' ');
   }
@@ -90,7 +82,7 @@ const Account = ({history, dispatch, isAuthenticated, user}) => {
     </div>
   )
 
- 
+
   return (
     <div>
       <div className='account-header'>
@@ -98,7 +90,7 @@ const Account = ({history, dispatch, isAuthenticated, user}) => {
       </div>
       <div className='account-page'>
         <div className='details-wrapper'>
-        
+
           <div className='details-text'>
             <h3>Your Details</h3>
             <h4>Display Name</h4>
@@ -109,22 +101,22 @@ const Account = ({history, dispatch, isAuthenticated, user}) => {
             {user.metadata.creationTime && <p>{formatDate(user.metadata.creationTime)}</p>}
             <h4>Last Login</h4>
             {user.metadata.lastSignInTime && <p>{formatDate(user.metadata.lastSignInTime)}</p>}
-            </div>
-            <div className='button-wrapper'>
-              <button className='button' onClick={() => dispatch(logoutUser())}>Logout</button>
-            </div>
+          </div>
+          <div className='button-wrapper'>
+            <button className='button' onClick={() => dispatch(logoutUser())}>Logout</button>
+          </div>
         </div>
-  
+
         <div className='profile-wrapper'>
           <div className='image-wrapper'>
             <h3>Profile Image</h3>
-            <img className='profile-image' src={imageURL || user.photoURL} alt='uploaded'/>
+            <img className='profile-image' src={imageURL || user.photoURL} alt='uploaded' />
           </div>
-            {showEdit ? <EditProfileImage /> : 
+          {showEdit ? <EditProfileImage /> :
             <div className='edit-wrapper'>
               <button className='button' onClick={() => setShowEdit(true)}>Change Image</button>
             </div>
-            }
+          }
         </div>
       </div>
     </div>
