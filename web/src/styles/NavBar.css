@@ -1,0 +1,98 @@
+.nav {
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--body-text);
+    text-decoration: none;
+    text-align: center;
+    display: flex;
+}
+
+.nav li {
+    font-size: 1.5em;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--secondary);
+}
+
+
+.link, .account, .cart {
+    text-decoration: none;
+    display: inline-block;
+    color: inherit;
+    padding: 1em 1.5em;
+}
+
+.account {
+    position: absolute;
+    top: 0;
+    right: 0;
+    user-select: none;
+}
+
+.cart {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-right: 8%;
+    user-select: none;
+}
+
+.cart-counter {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 7%;
+    margin-top: 1%;
+    user-select: none;
+    border-radius: 100%;
+    background-color: var(--primary);
+    font-size: 0.7em;
+    padding: 0.1em 0.5em 0.15em 0.5em;
+    text-align: center;
+    color: var(--secondary-inverted);
+    font-family: 'Avocado Regular';
+}
+
+.icon-active {
+    color: var(--primary);
+}
+
+.account:hover, .cart:hover {
+    color: var(--primary);
+}
+
+.logo-link {
+    text-decoration: none;
+    display: inline-block;
+    font-family: var(--header-text);
+    color: var(--primary);
+    font-size: 1.5em;
+    padding: 0 1em 0 1em;
+}
+
+.link:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+.link:hover {
+    background-color: var(--primary);
+    color: var(--secondary)
+}
+
+.link-active {
+    text-decoration: underline;
+}
+
+.link-active span {
+    color: var(--secondary);
+}
+
+.toggle-button {
+    left: 0;
+    position: absolute;
+    padding: 1em 1.5em;
+}

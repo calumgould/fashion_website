@@ -1,0 +1,45 @@
+@font-face {
+  font-family: 'Avocado Thin';
+  src: local('AvocadoThin'), local('Avocado Thin'),
+    url('../assets/fonts/avocado_sans_thin.otf') format('opentype')
+}
+
+@font-face {
+  font-family: 'Avocado Regular';
+  src: local('AvocadoRegular'), local('Avocado Regular'),
+    url('../assets/fonts/avocado_sans_regular.otf') format('opentype')
+}
+
+@font-face {
+  font-family: 'Avocado Bold';
+  src: local('AvocadoBold'), local('Avocado Bold'),
+    url('../assets/fonts/avocado_sans_bold.otf') format('opentype')
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #FFD226;
+  --secondary: #FFFFFF;
+  --secondary-inverted: #000000;
+  --background: #212121;
+  --background-lighter: #262626;
+  --background-inverted: #FFFFFF;
+  --background-inverted-lighter: #f2f2f2;
+  --button-text: #FFFFFF;
+  --header-text: 'Avocado Bold';
+  --body-text: 'Avocado Thin';
+}
+
+body {
+  background-color: var(--background);
+  color: var(--secondary);
+}
+
+
+
+
