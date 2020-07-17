@@ -1,0 +1,24 @@
+.about-text {
+    text-align: center;
+    font-size: 1.2em;
+    margin: 0 20%;
+}
+
+.about-text > li {
+    font-family: var(--header-text);
+    padding: 1em 0;
+    list-style: none;
+}
+
+.about-text > li > span {
+    color: var(--primary);
+}
+
+.about-logo {
+    text-decoration: none;
+    display: inline-block;
+    font-family: var(--header-text);
+    color: var(--primary);
+    font-size: 1.5em;
+    padding: 0 0.2em 0 0;
+}
