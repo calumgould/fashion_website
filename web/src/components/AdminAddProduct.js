@@ -88,7 +88,7 @@ const AdminAddProduct = ({ dispatch, categories, products }) => {
                     <div className='upload-wrapper'>
                         <h4>Upload Product Image</h4>
                         <div className='product-image-wrapper'>
-                            <img src={imageURL} alt='uploaded' />
+                            <img src={imageURL || require('../assets/images/placeholderProduct.jpg')} alt='uploaded' />
                         </div>
                         <label className='upload-file'>
                             <input id='upload' type='file' name='product-image' onChange={handleDisplayImage} accept='image/*'/>
